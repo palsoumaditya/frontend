@@ -7,6 +7,10 @@ import { motion } from "framer-motion";
 import { ArrowRight, ShoppingBag, Star, TrendingUp, Zap, Heart, ShoppingCart, Clock, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import LiveStatus from "@/components/stats/LiveStatus";
+import StoryCarousel from "@/components/stories/StoryCarousel";
+import ShoppingInspiration from "@/components/inspiration/ShoppingInspiration";
+import OfferProducts from "@/components/products/OfferProducts";
 
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -278,7 +282,17 @@ export default function Home() {
         </div>
       </section>
       
-      {/* Featured Products Section */}
+      {/* Instagram-style Stories - Positioned under hero section */}
+      
+            
+            {/* Instagram-style Stories - Positioned under hero section */}
+            <section className="py-8 md:py-12 w-full max-w-full overflow-hidden">
+              <div className="container mx-auto px-4">
+                <StoryCarousel />
+              </div>
+            </section>
+            
+            {/* Featured Products Section */}
       <section className="py-16 relative overflow-hidden">
         <div className="absolute inset-0 -z-10">
           <div className="absolute inset-0 bg-muted/30"></div>
@@ -411,6 +425,12 @@ export default function Home() {
         </div>
       </section>
       
+      {/* Live Status Section */}
+      <LiveStatus />
+      
+      {/* Offer Products Section */}
+      <OfferProducts />
+      
       {/* Call to Action */}
       <motion.section 
         initial={{ opacity: 0 }}
@@ -483,6 +503,10 @@ export default function Home() {
           </div>
         </div>
       </motion.section>
+      
+      {/* Existing Components */}
+      <ShoppingInspiration />
+      
     </div>
   );
 }
