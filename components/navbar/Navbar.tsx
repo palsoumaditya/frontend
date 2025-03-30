@@ -17,8 +17,12 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [searchActive, setSearchActive] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // Set mounted to true after component mounts on client
+    setMounted(true);
+    
     const handleScroll = () => {
       if (window.scrollY > 20) {
         setScrolled(true);
@@ -31,6 +35,73 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Prevent hydration mismatch by not rendering motion elements until client-side
+  if (!mounted) {
+    return (
+      <header className="fixed top-0 left-0 right-0 z-50 py-4 bg-transparent">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <Link 
+                href="/" 
+                className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600"
+              >
+                QuickCart
+              </Link>
+            </div>
+            
+            <nav className="hidden md:flex items-center space-x-1">
+              {["Home", "Shop", "Product Catalog", "Collections", "New Arrivals", "Sale"].map((item) => (
+                <div key={item}>
+                  <Link
+                    href={`/${item.toLowerCase().replace(" ", "-")}`}
+                    className="relative px-3 py-2 text-foreground/80 hover:text-foreground group"
+                  >
+                    {item}
+                  </Link>
+                </div>
+              ))}
+            </nav>
+            
+            <div className="hidden md:flex items-center space-x-1">
+              <Button variant="ghost" size="icon">
+                <Search size={20} />
+              </Button>
+              {[
+                { icon: Heart, label: "Wishlist", count: 0 },
+                { icon: User, label: "Account", count: null },
+                { icon: ShoppingCart, label: "Cart", count: 0 }
+              ].map((item) => (
+                <div key={item.label} className="relative">
+                  <Button variant="ghost" size="icon" className="relative group">
+                    <item.icon size={20} />
+                    {item.count !== null && (
+                      <Badge className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center p-0">
+                        {item.count}
+                      </Badge>
+                    )}
+                  </Button>
+                </div>
+              ))}
+            </div>
+            
+            <div className="flex items-center space-x-3 md:hidden">
+              <Button variant="ghost" size="icon" className="relative">
+                <ShoppingCart size={20} />
+                <Badge className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center p-0">0</Badge>
+              </Button>
+              
+              <Button variant="ghost" size="icon">
+                <Menu size={24} />
+              </Button>
+            </div>
+          </div>
+        </div>
+      </header>
+    );
+  }
+
+  // Full animated version rendered only on client-side
   return (
     <motion.header
       initial={{ y: -100 }}
@@ -60,18 +131,25 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-1">
-            {["Home", "Shop", "Collections", "New Arrivals", "Sale"].map((item, index) => (
+            {[
+              { name: "Home", path: "/" },
+              { name: "Shop", path: "/shop" },
+              { name: "Product Catalog", path: "/product-catalog" },
+              { name: "Collections", path: "/collections" },
+              { name: "New Arrivals", path: "/new-arrivals" },
+              { name: "Sale", path: "/sale" }
+            ].map((item, index) => (
               <motion.div
-                key={item}
+                key={item.name}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1, duration: 0.3 }}
               >
                 <Link
-                  href={`/${item.toLowerCase().replace(" ", "-")}`}
+                  href={item.path}
                   className="relative px-3 py-2 text-foreground/80 hover:text-foreground group"
                 >
-                  {item}
+                  {item.name}
                   <motion.span 
                     className="absolute bottom-0 left-0 h-0.5 bg-primary"
                     initial={{ width: 0 }}
@@ -190,7 +268,7 @@ export default function Navbar() {
                 </motion.div>
                 
                 <nav className="flex flex-col space-y-4">
-                  {["Home", "Shop", "Collections", "New Arrivals", "Sale"].map((item, index) => (
+                  {["Home", "Shop", "Product Catalog", "Collections", "New Arrivals", "Sale"].map((item, index) => (
                     <motion.div
                       key={item}
                       initial={{ opacity: 0, x: 50 }}

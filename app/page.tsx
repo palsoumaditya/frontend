@@ -15,6 +15,7 @@ import OfferProducts from "@/components/products/OfferProducts";
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [activeProduct, setActiveProduct] = useState(0);
+  const [showCatalog, setShowCatalog] = useState(false);
   
   useEffect(() => {
     setIsLoaded(true);
