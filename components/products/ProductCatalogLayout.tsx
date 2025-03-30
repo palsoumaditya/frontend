@@ -54,12 +54,8 @@ export function ProductCatalogLayout() {
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-purple-500/10 rounded-xl -z-10 blur-3xl opacity-50" />
             <ProductPageHeader />
-            <ProductCatalog onCategoryChange={(category) => {
-              // Dispatch custom event for category change
-              window.dispatchEvent(new CustomEvent('categoryChange', { 
-                detail: { category } 
-              }));
-            }} />
+            <ProductCatalog />
+            {/* Remove the onCategoryChange prop since ProductCatalog doesn't accept it */}
           </div>
         </motion.div>
       </div>
