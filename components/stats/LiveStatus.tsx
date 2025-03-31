@@ -122,14 +122,14 @@ export default function LiveStatus() {
                   <p className="text-sm font-medium text-muted-foreground mb-1">{item.label}</p>
                   <AnimatePresence mode="wait">
                     <motion.h3
-                      key={String(item.value)}
-                      initial={{ opacity: 0, y: 10 }}
+                      key={item.value}
+                      initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
+                      exit={{ opacity: 0, y: -20 }}
                       transition={{ duration: 0.3 }}
                       className="text-2xl font-bold"
                     >
-                      {item.format(item.value)}
+                      {typeof item.format === 'function' ? item.format(item.value as number) : item.value}
                     </motion.h3>
                   </AnimatePresence>
                 </div>
