@@ -1,411 +1,336 @@
 "use client";
 
-import React, { useState, useMemo, useRef } from "react";
-import { motion, AnimatePresence, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
+import React, { useState, useMemo, useRef, useEffect } from "react";
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { Marquee } from "./ui/marquee";
 import { HiringManual } from "./HiringManual";
-import { BookOpen } from "lucide-react";
+import { BookOpen, Send, MoreVertical, Bell, Search } from "lucide-react";
 
 const scenes = [
   {
     id: "hm-pain",
     num: "01",
     title: "The Old Way Ate Your Week.",
-    copy: "Writing the JD twice. Begging for resumes on a Sunday. Skimming hundreds of profiles with no shared rubric. The old loop ate your week and still came up short. Plumb rebuilt the loop. The noisy parts disappear. The parts that need a human get more room.",
-    cta: "See the old loop",
+    highlight: "The Friction.",
+    description: "Writing JDs twice. Begging for resumes. Skimming profiles with no shared rubric. The old loop ate your week and still came up short.",
+    stats: [
+      { label: "Manual Work", value: "80%" },
+      { label: "Lost Time", value: "24h/wk" }
+    ]
   },
   {
     id: "hm-newjd",
     num: "02",
     title: "It Starts With One Slack Command.",
-    copy: "Open Slack. Type /newjd. A short form appears. Eight fields: your email, role title, company, seniority, location, salary range, responsibilities, must-haves. Fill it like you are texting a teammate. That is the heaviest lift you will do all week. Within hours a polished JD draft lands in your DM.",
-    cta: "See the eight fields",
+    highlight: "The Input.",
+    description: "Open Slack. Type /newjd. Fill it like you are texting a teammate. That is the heaviest lift you will do all week.",
+    stats: [
+      { label: "Setup Time", value: "< 2m" },
+      { label: "Integration", value: "Slack" }
+    ]
   },
   {
     id: "hm-draft",
     num: "03",
     title: "We Draft. You Stay The Editor.",
-    copy: "The first draft is on us. It reads like you wrote it on your best day. Three options sit beneath: Revise, Reject, Create Doc and Proceed. Plumb adapts. Approve, and a clean Google Doc opens. Polish the last line, click Initiate Hiring Process, and the funnel opens.",
-    cta: "See a sample JD draft",
-  },
-  {
-    id: "hm-candidates",
-    num: "04",
-    title: "Candidates Show Up Ready For You.",
-    copy: "A day or two later, candidates are already graded against your role. Your must-haves, your level, your bar. Every profile gets the 3H litmus test: Hungry, Humble, High Standards. You get candidates in Slack, each as a one-page profile: snapshot, top achievement, LinkedIn, resume.",
-    cta: "Preview a sample one-pager",
-  },
-  {
-    id: "hm-decisions",
-    num: "05",
-    title: "Yes. Hold. Reject. Move On.",
-    copy: "You get a clean link in Slack. Open it between meetings. Each candidate is one page. Tap Proceed, Hold, or Reject. The next one slides in. The whole batch takes 20 minutes. Submit, and recruitment sequences every Proceed for interviews the same day.",
-    cta: "Preview a sample shortlist link",
+    highlight: "The AI Editor.",
+    description: "The first draft lands in your DM. Approve, revise, or proceed. It reads like you wrote it on your best day.",
+    stats: [
+      { label: "Drafting", value: "Instant" },
+      { label: "Accuracy", value: "98%" }
+    ]
   },
   {
     id: "hm-promise",
-    num: "06",
+    num: "04",
     title: "Days, Not Weeks.",
-    copy: "Most roles go from /newjd to a real shortlist inside a week. Some inside three days. You compress the boring middle. You keep the parts that matter: writing a great JD, meeting great people, making the call. Less hiring. More hires.",
-    cta: "View the timeline",
+    highlight: "The Velocity.",
+    description: "Most roles go from /newjd to a real shortlist inside a week. Compress the boring middle. Make the hire.",
+    stats: [
+      { label: "Shortlist", value: "48H" },
+      { label: "Speed", value: "10x" }
+    ]
   },
+];
+
+const sopSteps = [
+  {
+    you: "Run /newjd in Slack and fill form",
+    plumb: "Drafting your JD in company voice. I'll have a version for you in seconds.",
+    timing: "Minutes"
+  },
+  {
+    you: "Looks great, but make it more 'founding engineer' vibe.",
+    plumb: "Updated. High ownership, high impact. Better? Tap Approve to start sourcing.",
+    timing: "Seconds"
+  },
+  {
+    you: "Approve! Initiate hiring process.",
+    plumb: "Funnel open. Sourcing and screening starting now across all platforms. ⚡",
+    timing: "24H"
+  },
+  {
+    you: "Just checked in. Any updates?",
+    plumb: "Found 12 candidates. Screening 5 against your specific bar right now.",
+    timing: "Always On"
+  },
+  {
+    you: "Open the shortlist link",
+    plumb: "Curated shortlist ready! 5 top-tier candidates synced to your Slack.",
+    timing: "48H"
+  },
+  {
+    you: "Proceed with Alex and Sam. Reject others.",
+    plumb: "Done. Moving them to interviews today. Prep packs sent to your calendar.",
+    timing: "Instant"
+  },
+  {
+    you: "Alex was great. Sam lacked the technical depth.",
+    plumb: "Feedback logged. Adjusting search for Sam's replacement instantly.",
+    timing: "Continuous"
+  },
+  {
+    you: "Made an offer to Alex! They accepted.",
+    plumb: "Amazing! Closing the funnel and notifying the rest. Great hire. 🎉",
+    timing: "Done"
+  }
 ];
 
 export function ManagerStoryboard() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const chatContainerRef = useRef<HTMLDivElement>(null);
   const [activeIdx, setActiveIdx] = useState(0);
+  const [autoIdx, setAutoIdx] = useState(0);
+  const [showPlumb, setShowPlumb] = useState(false);
+  const [isTyping, setIsTyping] = useState(false);
   const [isManualOpen, setIsManualOpen] = useState(false);
   
+  // Real-feel Chat Logic
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+    
+    const runSequence = async () => {
+      setShowPlumb(false);
+      setIsTyping(false);
+      await new Promise(r => setTimeout(r, 1500));
+      setIsTyping(true);
+      await new Promise(r => setTimeout(r, 2000));
+      setIsTyping(false);
+      setShowPlumb(true);
+      
+      timer = setTimeout(() => {
+        setAutoIdx((prev) => (prev + 1) % sopSteps.length);
+      }, 4000);
+    };
+
+    runSequence();
+    return () => clearTimeout(timer);
+  }, [autoIdx]);
+
+  // Auto-scroll chat
+  useEffect(() => {
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+    }
+  }, [autoIdx, showPlumb, isTyping]);
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"]
   });
 
-  // Map scroll progress to scene index
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    const idx = Math.min(
-      Math.floor(latest * scenes.length),
-      scenes.length - 1
-    );
-    if (idx !== activeIdx) {
-      setActiveIdx(idx);
-    }
+    const idx = Math.min(Math.floor(latest * scenes.length), scenes.length - 1);
+    if (idx !== activeIdx) setActiveIdx(idx);
   });
 
   return (
     <>
-    <div ref={containerRef} className="relative h-[600vh] bg-background">
-      {/* Sticky Viewport Container */}
-      <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center">
-        
-        {/* Background Gradients for Depth */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-card/20 pointer-events-none" />
-        
-        <div className="max-w-7xl mx-auto px-6 w-full h-full flex items-center">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 w-full items-center">
-            
-            {/* Left Content Area (Animated Swap) */}
-            <div className="relative h-[400px] flex flex-col justify-center">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={scenes[activeIdx].id}
-                  initial={{ opacity: 0, x: -40, rotateX: 20 }}
-                  animate={{ opacity: 1, x: 0, rotateX: 0 }}
-                  exit={{ opacity: 0, x: 40, rotateX: -20 }}
-                  transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                  className="space-y-8"
-                >
-                  <div className="font-mono text-xs text-[#99ff66] font-bold tracking-[0.4em] uppercase opacity-70">
-                    Step // {scenes[activeIdx].num}
-                  </div>
-                  <h2 className="text-4xl md:text-6xl lg:text-7xl font-header font-bold text-foreground leading-[1.1]">
-                    {scenes[activeIdx].title}
-                  </h2>
-                  <p className="text-muted-foreground text-lg md:text-xl leading-relaxed font-subtext max-w-lg">
-                    {scenes[activeIdx].copy}
-                  </p>
-                  {scenes[activeIdx].cta && (
-                    <button className="text-foreground font-bold flex items-center gap-2 group text-sm uppercase tracking-widest border-b-2 border-[#99ff66]/20 hover:border-[#99ff66] transition-all pb-1 w-fit">
-                      {scenes[activeIdx].cta}
-                      <span className="group-hover:translate-x-1 transition-transform">→</span>
-                    </button>
-                  )}
-                </motion.div>
-              </AnimatePresence>
-            </div>
+      {/* Sticky Scenes Section - Text Only Centered */}
+      <div ref={containerRef} className="relative h-[400vh] bg-background">
+        <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center">
+          {/* Progress Line */}
+          <div className="absolute left-0 top-0 bottom-0 w-1 bg-border/20 z-50">
+            <motion.div 
+              style={{ scaleY: scrollYProgress }}
+              className="w-full bg-[#99ff66] origin-top"
+            />
+          </div>
 
-            {/* Right Visual Area (Animated Page Swap) */}
-            <div className="hidden lg:block relative perspective-1000">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={scenes[activeIdx].id}
-                  initial={{ opacity: 0, scale: 0.8, rotateY: 30, z: -100 }}
-                  animate={{ opacity: 1, scale: 1, rotateY: 0, z: 0 }}
-                  exit={{ opacity: 0, scale: 1.1, rotateY: -30, z: 100 }}
-                  transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                  className="w-full aspect-square relative bg-card border border-border rounded-[48px] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.3)] overflow-hidden group border-white/5"
-                >
-                  {/* Spotlight Effect */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#99ff66]/10 via-transparent to-transparent opacity-50" />
+          <div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeIdx}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -30 }}
+                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                className="space-y-12"
+              >
+                <div className="space-y-6">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-border/50 bg-muted/20 text-muted-foreground text-[10px] font-black tracking-[0.3em] uppercase">
+                    Step 0{activeIdx + 1}
+                  </div>
                   
-                  <div className="absolute inset-0 p-12 flex flex-col items-center justify-center">
-                    {/* Visual Content (Reused from previous logic) */}
-                    {scenes[activeIdx].id === "hm-pain" && (
-                      <div className="w-full h-full flex flex-col justify-between">
-                        <div className="text-[10px] font-bold tracking-[0.3em] text-muted-foreground uppercase text-center mb-8">Manual Loop / The Noise</div>
-                        <div className="flex-1 relative">
-                           <Marquee vertical className="h-full opacity-30 pointer-events-none" repeat={3}>
-                             {[1,2,3,4,5].map(i => (
-                               <div key={i} className="p-4 border border-border rounded-xl bg-muted/50 mb-4 text-xs font-mono">
-                                 RESUME_PARSING_ERROR_{i}
-                               </div>
-                             ))}
-                           </Marquee>
-                           <div className="absolute inset-0 flex items-center justify-center">
-                             <motion.div 
-                               animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.6, 0.3] }}
-                               transition={{ duration: 2, repeat: Infinity }}
-                               className="w-48 h-48 border border-[#99ff66]/20 rounded-full flex items-center justify-center bg-[#99ff66]/5"
-                             >
-                               <span className="text-[10px] font-bold text-[#99ff66] uppercase tracking-widest">Inefficient</span>
-                             </motion.div>
-                           </div>
-                        </div>
-                      </div>
-                    )}
+                  <h2 className="text-5xl md:text-7xl font-playfair font-bold leading-tight tracking-tight">
+                    {scenes[activeIdx].title} <br />
+                    <span className="italic text-[#99ff66]">{scenes[activeIdx].highlight}</span>
+                  </h2>
+                  
+                  <p className="text-muted-foreground text-lg md:text-xl leading-relaxed max-w-2xl mx-auto font-subtext">
+                    {scenes[activeIdx].description}
+                  </p>
+                </div>
 
-                    {scenes[activeIdx].id === "hm-newjd" && (
-                      <div className="w-full max-w-xs space-y-4">
-                        <div className="flex items-center justify-between mb-8">
-                          <div className="text-xs font-bold uppercase tracking-[0.3em] text-foreground/50">Command Input</div>
-                          <div className="w-3 h-3 rounded-full bg-[#99ff66] shadow-[0_0_15px_#99ff66]" />
-                        </div>
-                        {[1,2,3,4,5,6,7,8].map(i => (
-                          <motion.div 
-                            key={i}
-                            initial={{ width: 0 }}
-                            animate={{ width: "100%" }}
-                            transition={{ duration: 0.3, delay: i * 0.05 }}
-                            className="h-10 bg-muted/30 border border-border/50 rounded-xl flex items-center px-4"
-                          >
-                            <div className={cn("h-1.5 bg-[#99ff66]/10 rounded", i % 2 === 0 ? "w-24" : "w-16")} />
-                          </motion.div>
-                        ))}
-                        <div className="h-14 bg-[#99ff66] rounded-2xl mt-8 flex items-center justify-center text-black font-bold text-xs uppercase tracking-[0.2em] shadow-2xl">
-                          Initiate /newjd
-                        </div>
-                      </div>
-                    )}
-
-                    {scenes[activeIdx].id === "hm-draft" && (
-                      <div className="w-full h-full flex flex-col p-4">
-                        <div className="flex-1 bg-background/50 backdrop-blur-sm border border-white/5 rounded-[32px] p-8 shadow-2xl relative overflow-hidden">
-                          <div className="flex justify-between items-center mb-12">
-                            <div className="h-4 w-40 bg-white/10 rounded-full" />
-                            <div className="bg-[#99ff66] text-black text-[9px] font-black px-3 py-1 rounded-full uppercase">Review</div>
-                          </div>
-                          <div className="space-y-5">
-                            {[1,2,3,4,5,6].map(i => (
-                              <motion.div 
-                                key={i}
-                                initial={{ opacity: 0, x: -10 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: i * 0.08 }}
-                                className={cn("h-2 bg-white/5 rounded-full", i === 4 ? "w-1/2" : "w-full")} 
-                              />
-                            ))}
-                          </div>
-                          <div className="absolute bottom-8 left-8 right-8">
-                            <div className="grid grid-cols-2 gap-4">
-                              <div className="h-12 border border-white/10 rounded-2xl flex items-center justify-center text-[10px] font-bold uppercase tracking-widest text-white/40">Revise</div>
-                              <div className="h-12 bg-[#99ff66] rounded-2xl flex items-center justify-center text-black text-[10px] font-bold uppercase tracking-widest">Approve</div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-
-                    {scenes[activeIdx].id === "hm-candidates" && (
-                      <div className="w-full grid grid-cols-2 gap-6 h-full p-4">
-                        <div className="space-y-4">
-                          {[1,2,3,4].map(i => (
-                            <motion.div 
-                              key={i}
-                              initial={{ opacity: 0, scale: 0.9 }}
-                              animate={{ opacity: 1, scale: 1 }}
-                              transition={{ delay: i * 0.1 }}
-                              className="p-4 border border-white/5 rounded-2xl bg-white/[0.02] flex items-center gap-3"
-                            >
-                              <div className="w-8 h-8 rounded-full bg-[#99ff66]/10 border border-[#99ff66]/20" />
-                              <div className="h-1.5 w-12 bg-white/10 rounded" />
-                            </motion.div>
-                          ))}
-                        </div>
-                        <div className="bg-[#111111] border border-white/10 rounded-[32px] p-6 shadow-2xl relative">
-                           <div className="w-12 h-12 rounded-2xl bg-white/5 mb-6" />
-                           <div className="h-3 w-24 bg-white/20 rounded-full mb-3" />
-                           <div className="h-2 w-16 bg-[#99ff66]/30 rounded-full mb-8" />
-                           <div className="space-y-3">
-                             <div className="h-1.5 w-full bg-white/5 rounded-full" />
-                             <div className="h-1.5 w-full bg-white/5 rounded-full" />
-                             <div className="h-1.5 w-3/4 bg-white/5 rounded-full" />
-                           </div>
-                           <div className="mt-auto absolute bottom-6 left-6 right-6 h-10 bg-[#99ff66] rounded-xl" />
-                        </div>
-                      </div>
-                    )}
-
-                    {scenes[activeIdx].id === "hm-decisions" && (
-                      <div className="relative w-full h-full flex flex-col items-center justify-center">
-                        <motion.div 
-                          animate={{ y: [0, -20, 0] }}
-                          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                          className="w-56 aspect-[9/19] bg-[#0a0a0a] border-[8px] border-[#1a1a1a] rounded-[50px] shadow-[0_50px_100px_rgba(0,0,0,0.5)] overflow-hidden"
-                        >
-                           <div className="h-full w-full p-6 pt-12 space-y-6">
-                              <div className="h-32 w-full bg-white/5 rounded-3xl" />
-                              <div className="space-y-2">
-                                <div className="h-2 w-1/2 bg-white/20 rounded" />
-                                <div className="h-2 w-3/4 bg-white/10 rounded" />
-                              </div>
-                              <div className="pt-8 grid grid-cols-3 gap-2">
-                                <div className="h-10 bg-red-500/20 rounded-xl" />
-                                <div className="h-10 bg-amber-500/20 rounded-xl" />
-                                <div className="h-10 bg-[#99ff66] rounded-xl" />
-                              </div>
-                           </div>
-                        </motion.div>
-                      </div>
-                    )}
-
-                    {scenes[activeIdx].id === "hm-promise" && (
-                      <div className="w-full flex flex-col items-center">
-                         <div className="text-8xl font-header font-bold text-[#99ff66] mb-4">12</div>
-                         <div className="text-xs font-mono uppercase tracking-[0.5em] text-white/40 mb-12">Days to Offer</div>
-                         <div className="w-full space-y-4">
-                            {[1,2,3].map(i => (
-                              <div key={i} className="h-2 w-full bg-white/5 rounded-full overflow-hidden">
-                                <motion.div 
-                                  initial={{ width: 0 }}
-                                  animate={{ width: "100%" }}
-                                  transition={{ duration: 2, delay: i * 0.3 }}
-                                  className="h-full bg-gradient-to-r from-transparent to-[#99ff66]"
-                                />
-                              </div>
-                            ))}
-                         </div>
-                      </div>
-                    )}
-                  </div>
-                </motion.div>
-              </AnimatePresence>
-            </div>
-
+                <div className="flex flex-wrap justify-center gap-12">
+                  {scenes[activeIdx].stats.map((stat, i) => (
+                    <div key={i} className="space-y-1">
+                      <div className="text-3xl font-bold text-foreground">{stat.value}</div>
+                      <div className="text-[10px] font-black text-muted-foreground uppercase tracking-widest">{stat.label}</div>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            </AnimatePresence>
           </div>
         </div>
       </div>
-    </div>
 
-    {/* SOP Section - Moved outside to prevent overlap and restore split layout */}
-    <section id="hm-sop" className="relative z-30 py-32 bg-[#0a0a0a] text-white overflow-hidden border-t border-white/5">
-      {/* Background Ambient Glows */}
-      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[#99ff66]/5 blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-[#3b82f6]/5 blur-[120px] pointer-events-none" />
-      
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-          
-          {/* Sticky Left Header */}
-          <div className="lg:col-span-4 lg:sticky lg:top-32 space-y-6">
+      {/* SOP Section - Centered Stack with Auto-playing Phone Chat */}
+      <section id="hm-sop" className="relative z-30 py-32 bg-background text-foreground overflow-hidden border-t border-border/50">
+        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-[#99ff66]/10 dark:bg-[#99ff66]/5 blur-[120px] pointer-events-none opacity-30" />
+        
+        <div className="max-w-4xl mx-auto px-6 relative z-10 h-full text-center">
+          <div className="flex flex-col items-center gap-16 mb-24">
+            
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="space-y-6"
+              className="space-y-8 max-w-2xl mx-auto"
             >
-              <div className="px-4 py-1 rounded-full border border-[#99ff66]/30 bg-[#99ff66]/5 text-[#99ff66] text-[10px] font-bold tracking-[0.4em] uppercase inline-block">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#99ff66]/30 bg-[#99ff66]/10 dark:bg-[#99ff66]/5 text-[#99ff66] text-[10px] font-black tracking-[0.3em] uppercase">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#99ff66] animate-pulse" />
                 The Partnership
               </div>
-              <h2 className="text-5xl md:text-6xl lg:text-7xl font-playfair font-bold leading-tight">
-                The Hiring <br />
-                Manager <span className="italic text-[#99ff66]">SOP.</span>
-              </h2>
-              <p className="text-white/40 text-lg leading-relaxed max-w-sm">
-                We handle the noise. You handle the decisions. A clear breakdown of our shared mission.
-              </p>
               
-              <div className="pt-8 flex flex-col gap-4">
-                <div className="flex items-center gap-3 text-xs font-mono text-white/20">
-                  <div className="w-1.5 h-1.5 rounded-full bg-[#99ff66]" />
-                  <span>VERSION 2.4 // LATEST</span>
-                </div>
-                <div className="flex items-center gap-3 text-xs font-mono text-white/20">
-                  <div className="w-1.5 h-1.5 rounded-full bg-[#3b82f6]" />
-                  <span>SECURE SLACK CHANNEL</span>
-                </div>
-                
+              <h2 className="text-5xl md:text-7xl font-playfair font-bold leading-tight tracking-tight">
+                The Hiring Manager <br />
+                <span className="italic text-[#99ff66]">SOP.</span>
+              </h2>
+              
+              <p className="text-muted-foreground text-lg md:text-xl leading-relaxed font-subtext">
+                Watch the partnership in action. See how Plumb handles the heavy lifting while you stay in control.
+              </p>
+
+              <div className="pt-4 flex justify-center">
                 <button 
                   onClick={() => setIsManualOpen(true)}
-                  className="flex items-center gap-3 bg-white text-black rounded-2xl px-6 py-4 text-sm font-bold hover:scale-105 active:scale-95 transition-all shadow-xl group w-full sm:w-fit"
+                  className="flex items-center gap-3 bg-black dark:bg-white text-white dark:text-black rounded-xl px-8 py-4 text-sm font-bold hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl group"
                 >
-                  <BookOpen className="w-4 h-4 text-black/50 group-hover:text-[#99ff66] transition-colors" />
-                  Read Full Hiring Manual
+                  <BookOpen className="w-4 h-4 text-[#99ff66]" />
+                  Read Full Manual
                 </button>
               </div>
             </motion.div>
-          </div>
 
-          {/* Scrolling Comparison Cards */}
-          <div className="lg:col-span-8 space-y-6">
-            {[
-              ["Run /newjd in Slack and fill form", "Draft your JD in company voice", "Minutes"],
-              ["Tap Revise or Approve", "Iterate on revisions instantly", "Seconds"],
-              ["Click Initiate Hiring Process", "Open the funnel inside 24 hours", "24H"],
-              ["Wait. Do your real job.", "System finds the right candidates", "Always On"],
-              ["Open the shortlist link", "Share curated shortlist in 48h", "48H"],
-              ["Tap Proceed, Hold, or Reject", "Decide with a simple dropdown", "Instant"],
-              ["Show up to interviews", "Send short prep packs for you", "Same Day"],
-              ["Submit the feedback link", "Improve the system for next role", "Continuous"],
-              ["Make the hire", "Close the loop and tidy up rest", "Done"]
-            ].map(([you, plumb, timing], i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.05 }}
-                className="group relative"
-              >
-                <div className="flex flex-col md:flex-row gap-4 items-stretch">
-                  {/* You Side */}
-                  <div className="flex-1 bg-white/[0.03] border border-white/5 rounded-2xl p-6 md:p-8 hover:bg-white/[0.05] transition-all group-hover:border-[#99ff66]/20">
-                    <div className="space-y-3">
-                      <div className="text-[10px] font-bold text-[#99ff66] uppercase tracking-widest opacity-50">You</div>
-                      <div className="text-lg font-subheader font-bold text-white/90 leading-tight">
-                        {you}
-                      </div>
-                    </div>
-                  </div>
+            {/* Custom Phone Frame with Auto-playing Chat */}
+            <div className="relative w-full max-w-[400px] mx-auto">
+              <div className="relative w-full aspect-[9/19.5] bg-[#0F0F0F] rounded-[55px] border-[10px] border-[#1F1F1F] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5),0_0_0_1px_rgba(255,255,255,0.05)] overflow-hidden text-left">
+                <div className="absolute top-4 left-1/2 -translate-x-1/2 w-28 h-7 bg-black rounded-full z-50 flex items-center justify-center">
+                  <div className="w-2 h-2 rounded-full bg-[#1F1F1F] ml-auto mr-4" />
+                </div>
 
-                  {/* Plumb Side */}
-                  <div className="flex-1 bg-[#99ff66]/[0.02] border border-[#99ff66]/10 rounded-2xl p-6 md:p-8 hover:bg-[#99ff66]/[0.05] transition-all group-hover:border-[#99ff66]/30">
-                    <div className="flex items-start justify-between gap-6">
-                      <div className="space-y-3">
-                        <div className="text-[10px] font-bold text-[#99ff66] uppercase tracking-widest">Plumb</div>
-                        <div className="text-lg font-subheader font-bold text-white/80 leading-tight">
-                          {plumb}
+                <div className="absolute inset-0 bg-background pt-16 pb-8 px-4 flex flex-col">
+                  <div className="flex items-center justify-between mb-8 shrink-0">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-[8px] font-black text-white">PL</div>
+                      <div>
+                        <div className="text-[10px] font-black uppercase tracking-widest text-foreground">Plumb OS</div>
+                        <div className="flex items-center gap-1">
+                          <div className="w-1 h-1 rounded-full bg-[#99ff66]" />
+                          <span className="text-[8px] text-muted-foreground uppercase">Active Now</span>
                         </div>
                       </div>
-                      <div className="shrink-0 bg-[#99ff66]/10 border border-[#99ff66]/20 rounded-lg px-2 py-1 h-fit">
-                        <div className="text-[9px] font-black text-[#99ff66] uppercase tracking-tighter">{timing}</div>
-                      </div>
+                    </div>
+                    <MoreVertical className="w-4 h-4 text-muted-foreground" />
+                  </div>
+
+                  <div ref={chatContainerRef} className="flex-1 overflow-y-auto space-y-8 no-scrollbar pr-1 scroll-smooth">
+                    <AnimatePresence initial={false}>
+                      {sopSteps.slice(0, autoIdx).map((step, i) => (
+                        <div key={`history-${i}`} className="space-y-6 opacity-40 grayscale-[0.5]">
+                          <div className="flex flex-col items-start pr-8">
+                            <div className="text-[8px] font-black text-muted-foreground uppercase tracking-widest mb-1.5 ml-1">You</div>
+                            <div className="bg-muted/50 border border-border rounded-2xl rounded-tl-none p-4 text-[13px] leading-relaxed font-bold italic">{step.you}</div>
+                          </div>
+                          <div className="flex flex-col items-end pl-8">
+                            <div className="text-[8px] font-black text-muted-foreground uppercase tracking-widest mb-1.5 mr-1 text-right">Plumb</div>
+                            <div className="bg-[#99ff66]/10 border border-[#99ff66]/30 rounded-2xl rounded-tr-none p-4 text-[13px] leading-relaxed text-foreground font-bold text-right w-full">{step.plumb}</div>
+                          </div>
+                        </div>
+                      ))}
+
+                      <motion.div key={`active-${autoIdx}`} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
+                        <div className="flex flex-col items-start pr-8">
+                          <div className="text-[8px] font-black text-muted-foreground uppercase tracking-widest mb-1.5 ml-1">You</div>
+                          <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="bg-muted/50 border border-border rounded-2xl rounded-tl-none p-4 text-[13px] leading-relaxed font-bold">{sopSteps[autoIdx].you}</motion.div>
+                        </div>
+
+                        {isTyping && (
+                          <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="flex flex-col items-end pl-8">
+                            <div className="bg-[#99ff66]/5 border border-[#99ff66]/20 rounded-2xl rounded-tr-none p-4 flex items-center gap-1">
+                              <span className="w-1.5 h-1.5 rounded-full bg-[#99ff66] animate-bounce [animation-delay:-0.3s]" />
+                              <span className="w-1.5 h-1.5 rounded-full bg-[#99ff66] animate-bounce [animation-delay:-0.15s]" />
+                              <span className="w-1.5 h-1.5 rounded-full bg-[#99ff66] animate-bounce" />
+                            </div>
+                          </motion.div>
+                        )}
+
+                        {showPlumb && (
+                          <motion.div initial={{ opacity: 0, scale: 0.95, y: 10 }} animate={{ opacity: 1, scale: 1, y: 0 }} className="flex flex-col items-end pl-8">
+                            <div className="text-[8px] font-black text-muted-foreground uppercase tracking-widest mb-1.5 mr-1 text-right">Plumb</div>
+                            <div className="bg-[#99ff66]/10 border border-[#99ff66]/30 rounded-2xl rounded-tr-none p-4 text-[13px] leading-relaxed text-foreground font-bold text-right w-full shadow-lg shadow-[#99ff66]/5">
+                              {sopSteps[autoIdx].plumb}
+                              <div className="mt-2 flex items-center justify-end gap-1">
+                                <span className="text-[8px] font-black text-[#99ff66] uppercase tracking-tighter bg-[#99ff66]/20 px-1.5 py-0.5 rounded">{sopSteps[autoIdx].timing}</span>
+                              </div>
+                            </div>
+                          </motion.div>
+                        )}
+                      </motion.div>
+                    </AnimatePresence>
+                    <div className="h-4" />
+                  </div>
+
+                  <div className="mt-auto h-12 bg-muted/20 border border-border/50 rounded-2xl flex items-center px-4 justify-between shrink-0">
+                    <span className="text-[10px] text-muted-foreground">Auto-playing demo...</span>
+                    <div className="flex items-center gap-1">
+                       <span className="w-1 h-1 rounded-full bg-blue-600 animate-bounce [animation-delay:-0.3s]" />
+                       <span className="w-1 h-1 rounded-full bg-blue-600 animate-bounce [animation-delay:-0.15s]" />
+                       <span className="w-1 h-1 rounded-full bg-blue-600 animate-bounce" />
                     </div>
                   </div>
                 </div>
-              </motion.div>
-            ))}
+              </div>
+            </div>
           </div>
+
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} className="mt-32 pt-20 border-t border-border/50 text-center space-y-12">
+            <div className="space-y-4">
+              <h3 className="text-3xl font-header font-bold text-foreground">Ready to see the full spec?</h3>
+              <p className="text-muted-foreground max-w-lg mx-auto">Dive deeper into our complete hiring methodology and standard operating procedures.</p>
+            </div>
+            <button onClick={() => setIsManualOpen(true)} className="flex items-center gap-4 bg-black dark:bg-white text-white dark:text-black rounded-2xl px-12 py-5 text-sm font-bold hover:scale-[1.05] active:scale-[0.95] transition-all shadow-2xl group mx-auto">
+              <BookOpen className="w-5 h-5 text-[#99ff66]" />
+              Read Full Hiring Manual
+            </button>
+            <p className="text-muted-foreground/30 text-[10px] font-mono uppercase tracking-[0.5em] pt-12">End of Operating Procedure // Plumb Hiring Systems</p>
+          </motion.div>
         </div>
+      </section>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          className="mt-32 pt-8 border-t border-white/5 text-center"
-        >
-           <p className="text-white/10 text-[10px] font-mono uppercase tracking-[0.5em]">End of Operating Procedure // Plumb Hiring Systems</p>
-        </motion.div>
-      </div>
-    </section>
-
-    <HiringManual 
-      isOpen={isManualOpen} 
-      onClose={() => setIsManualOpen(false)} 
-    />
+      <HiringManual isOpen={isManualOpen} onClose={() => setIsManualOpen(false)} />
     </>
   );
 }
-
-
-
-
