@@ -7,7 +7,7 @@ import { Stats } from "@/components/Stats";
 import { Footer } from "@/components/Footer";
 
 const Divider = () => (
-  <div className="max-w-6xl mx-auto px-4">
+  <div className="max-w-6xl mx-auto px-4 my-32">
     <div className="h-px bg-neutral-200 dark:bg-neutral-800" />
   </div>
 );

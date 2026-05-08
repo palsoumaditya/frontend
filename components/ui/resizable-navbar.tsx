@@ -49,10 +49,10 @@ export const Navbar = ({ children, className }: { children: React.ReactNode; cla
         <motion.div
           layout
           className={cn(
-            "mx-auto border relative overflow-hidden transition-all duration-500",
+            "mx-auto relative overflow-hidden transition-all duration-500",
             isScrolled
-              ? "max-w-3xl border-white/20 shadow-[0_8px_30px_rgb(153,255,102,0.2)] py-2 px-6 rounded-2xl bg-neutral-900/80 backdrop-blur-xl"
-              : "max-w-7xl border-transparent bg-transparent py-4 px-4 rounded-2xl"
+              ? "max-w-3xl border border-white/20 shadow-[0_8px_30px_rgb(153,255,102,0.2)] py-2 px-6 rounded-2xl bg-neutral-900/80 backdrop-blur-xl"
+              : "max-w-7xl border-none bg-transparent py-4 px-4 rounded-2xl"
           )}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
         >
