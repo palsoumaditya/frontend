@@ -11,8 +11,9 @@ export default function ManagerPage() {
       <ManagerStoryboard />
       <ManagerQuote />
       <ManagerCTA />
-      <Footer />
+      <Footer hideCTA={true} />
     </main>
+
   );
 }
 

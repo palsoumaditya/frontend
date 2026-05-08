@@ -1,43 +1,66 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { InteractiveHoverButton } from "@/registry/magicui/interactive-hover-button";
 
 export function ManagerCTA() {
   return (
-    <section className="py-24 px-4 bg-background">
-      <div className="max-w-[1152px] mx-auto">
+    <section className="py-32 px-4 bg-background relative overflow-hidden">
+      {/* Decorative Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#99ff66]/10 blur-[120px] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="bg-[#111111] rounded-[48px] p-12 md:p-24 text-center relative overflow-hidden"
+          className="relative bg-[#0a0a0a] rounded-[64px] p-12 md:p-32 text-center overflow-hidden border border-white/5 shadow-2xl"
         >
-          {/* Subtle Glow */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#99ff66]/5 blur-[120px] pointer-events-none" />
+          {/* Internal gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
 
-          <div className="relative z-10">
-            <h2 className="text-[48px] md:text-[64px] lg:text-[72px] font-pt-serif font-bold text-white leading-[1.1] mb-12 max-w-4xl mx-auto">
-              You have a role to fill. You have a Slack window already open. The fastest path to a great hire is a <span className="italic text-[#99ff66]">single command</span>.
+          <div className="relative z-10 flex flex-col items-center">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="mb-12"
+            >
+              <div className="px-6 py-2 rounded-full border border-[#99ff66]/30 bg-[#99ff66]/5 text-[#99ff66] text-[10px] font-bold tracking-[0.4em] uppercase">
+                A single command.
+              </div>
+            </motion.div>
+
+            <h2 className="text-5xl md:text-7xl lg:text-8xl font-pt-serif font-bold text-white leading-[1] mb-12 max-w-5xl">
+              You have a role to fill. <br />
+              <span className="italic text-[#99ff66]">The work starts here.</span>
             </h2>
 
-            <div className="flex flex-col items-center gap-6">
-              <div className="flex flex-col sm:flex-row items-center gap-6">
-                <button className="bg-[#99ff66] text-black px-10 py-4 rounded-full font-bold text-lg hover:bg-[#aaff77] transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(153,255,102,0.2)]">
-                  Run /newjd in Slack
-                </button>
-                <button className="bg-transparent text-white border border-white/20 hover:border-white/40 px-10 py-4 rounded-full font-bold text-lg transition-all">
-                  Or email recruitment@emsoft.com
-                </button>
-              </div>
-              <button className="text-white/60 hover:text-[#99ff66] transition-colors text-sm underline underline-offset-4 font-geist">
-                Or skim the Hiring Manager SOP
-              </button>
+            <div className="flex flex-col sm:flex-row items-center gap-6 mt-8">
+              <InteractiveHoverButton className="bg-[#99ff66] text-black border-none px-10 py-4 text-lg">
+                Run /newjd in Slack
+              </InteractiveHoverButton>
+              <InteractiveHoverButton className="bg-white/5 text-white border-white/10 px-10 py-4 text-lg backdrop-blur-sm">
+                Request a Demo
+              </InteractiveHoverButton>
             </div>
+            
+            <motion.p 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
+              className="mt-12 text-white/30 text-xs font-mono uppercase tracking-[0.3em]"
+            >
+              Ready to ship your hiring funnel?
+            </motion.p>
           </div>
         </motion.div>
       </div>
     </section>
   );
 }
+
+
 

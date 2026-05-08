@@ -1,117 +1,123 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { InteractiveHoverButton } from "@/registry/magicui/interactive-hover-button";
 
 export default function ManagerHero() {
   return (
-    <section className="relative pt-32 pb-20 px-4 bg-background transition-colors duration-300 overflow-hidden">
-      {/* Background Pattern - Simplified AnimatedGridPattern */}
-      <div className="absolute inset-0 z-0 opacity-[0.12] pointer-events-none">
-        <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle, #888 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+    <section className="relative flex flex-col items-center justify-center pt-32 pb-20 px-4 text-center overflow-hidden bg-background">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none">
+        <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle, #000 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
       </div>
 
-      <div className="max-w-[1152px] mx-auto relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 bg-[#99ff66]/20 text-[#66cc33] dark:text-[#99ff66] px-4 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase mb-8 border border-[#99ff66]/30"
-          >
-            Hiring Manager Hub
-          </motion.div>
+      <div className="max-w-7xl mx-auto relative z-10 flex flex-col items-center">
+        {/* Badge */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="mb-8"
+        >
+          <Badge variant="outline" className="px-4 py-1.5 rounded-full border-gray-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 text-gray-600 dark:text-neutral-400 font-medium flex items-center gap-2 shadow-sm">
+            <span className="w-2 h-2 rounded-full bg-[#99ff66] animate-pulse" />
+            FOR HIRING MANAGERS
+          </Badge>
+        </motion.div>
 
-          <motion.h1 
-            initial="hidden"
-            animate="visible"
-            variants={{
-              hidden: { opacity: 0 },
-              visible: {
-                opacity: 1,
-                transition: {
-                  staggerChildren: 0.06
-                }
-              }
-            }}
-            className="text-[64px] lg:text-[80px] font-pt-serif leading-[1.1] text-foreground mb-8"
-          >
-            {"Less Hiring. ".split(" ").map((word, i) => (
-              <motion.span key={i} variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }}>
-                {word}{" "}
-              </motion.span>
-            ))}
-            <motion.span 
-              variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }}
-              className="italic"
-            >
-              More hires.
-            </motion.span>
-          </motion.h1>
+        {/* Main Title */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="max-w-4xl mb-6"
+        >
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-pt-serif tracking-tight leading-[1.1] text-[#1a1a1a] dark:text-white">
+            Less Hiring. <br />
+            <span className="italic">More hires.</span>
+          </h1>
+        </motion.div>
 
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-            className="text-muted-foreground text-lg lg:text-xl leading-relaxed font-geist mb-12"
-          >
-            You have a role to fill. You do not have weeks. Type one Slack command and the work starts. A few days later you walk into an interview with a shortlist worth your time. You stay in the chair. Plumb runs the rest.
-          </motion.p>
-          
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-6"
-          >
-            <button className="bg-primary text-primary-foreground px-8 py-4 rounded-xl font-medium hover:bg-primary/90 transition-all shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5">
-              Run /newjd in Slack
-            </button>
-            <button className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 underline underline-offset-4 decoration-border">
-              Or email recruitment@emsoft.com
-            </button>
-          </motion.div>
-        </div>
+        {/* Description */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="text-gray-500 dark:text-neutral-400 text-lg md:text-xl max-w-2xl mb-10 leading-relaxed"
+        >
+          You have a role to fill. You do not have weeks. Type one Slack command and the work starts. Plumb compresses the hiring cycle so you can stay in your flow.
+        </motion.p>
 
-        {/* Faux Slack Composer Pill */}
+        {/* CTA Buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="flex flex-col sm:flex-row gap-4 mb-20"
+        >
+          <InteractiveHoverButton className="bg-[#99ff66] text-black border-none px-8 py-3 text-base">
+            Run /newjd in Slack
+          </InteractiveHoverButton>
+          <InteractiveHoverButton className="bg-white dark:bg-neutral-900 text-black dark:text-white border-gray-200 dark:border-neutral-800 px-8 py-3 text-base">
+            Skim the SOP
+          </InteractiveHoverButton>
+        </motion.div>
+
+        {/* Terminal Visual Mock */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.2 }}
-          className="max-w-2xl mx-auto mt-20 relative group"
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="relative w-full max-w-4xl aspect-[16/10] md:aspect-[16/8]"
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-[#99ff66]/20 via-[#3b82f6]/20 to-[#99ff66]/20 blur-xl opacity-50 group-hover:opacity-75 transition-opacity" />
-          <div className="relative bg-card border border-border rounded-2xl p-6 shadow-2xl flex items-center gap-4 transition-colors duration-300">
-            <div className="w-10 h-10 rounded-lg bg-[#99ff66]/20 flex items-center justify-center text-[#66cc33] font-bold text-xl">
-              S
-            </div>
-            <div className="flex-1 font-mono text-lg flex items-center gap-1 text-foreground/80">
-              <span className="text-[#99ff66]">/</span>
-              <motion.span
-                initial={{ width: 0 }}
-                animate={{ width: "auto" }}
-                transition={{ duration: 1, delay: 2, ease: "linear" }}
-                className="overflow-hidden whitespace-nowrap"
-              >
-                newjd
-              </motion.span>
-              <motion.div
-                animate={{ opacity: [0, 1, 0] }}
-                transition={{ duration: 0.8, repeat: Infinity }}
-                className="w-0.5 h-6 bg-[#99ff66]"
-              />
-            </div>
-            <div className="text-muted-foreground text-sm font-geist">
-              Slack Command
-            </div>
-          </div>
-          
-          {/* Meteors Mock */}
-          <div className="absolute -top-10 -right-10 w-20 h-px bg-gradient-to-l from-transparent via-[#99ff66]/50 to-[#99ff66] rotate-[30deg] opacity-40" />
-          <div className="absolute -bottom-20 -left-20 w-32 h-px bg-gradient-to-r from-transparent via-[#3b82f6]/50 to-[#3b82f6] -rotate-[15deg] opacity-30" />
+          <Terminal>
+            <TypingAnimation delay={500}>
+              /newjd --role "Senior Product Engineer" --team "Platform" --bar "3H"
+            </TypingAnimation>
+
+            <AnimatedSpan delay={2500} className="text-[#99ff66]">
+              ✔ Initializing Plumb Sourcing Engine...
+            </AnimatedSpan>
+
+            <AnimatedSpan delay={3000} className="text-[#99ff66]">
+              ✔ Mapping company voice from 12 past hires.
+            </AnimatedSpan>
+
+            <AnimatedSpan delay={3500} className="text-[#99ff66]">
+              ✔ Benchmarking market salary: $160k - $210k.
+            </AnimatedSpan>
+
+            <AnimatedSpan delay={4000} className="text-[#99ff66]">
+              ✔ Generating JD Draft V1.0 (Hungry, Humble, High Standards).
+            </AnimatedSpan>
+
+            <AnimatedSpan delay={4500} className="text-blue-400">
+              ℹ Found 4 high-match candidates in passive pool.
+            </AnimatedSpan>
+
+            <AnimatedSpan delay={5000} className="text-[#99ff66]">
+              ✔ Syncing with Google Docs & Slack.
+            </AnimatedSpan>
+
+            <TypingAnimation delay={6000} className="text-white/60">
+              Success! JD drafted and Sourcing Loop initiated.
+            </TypingAnimation>
+
+            <TypingAnimation delay={7000} className="text-white/40 italic">
+              Check your Slack DM to review the draft.
+            </TypingAnimation>
+          </Terminal>
         </motion.div>
       </div>
     </section>
   );
 }
+
+import {
+  AnimatedSpan,
+  Terminal,
+  TypingAnimation,
+} from "@/registry/magicui/terminal";
+
 
