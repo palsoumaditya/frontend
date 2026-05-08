@@ -1,0 +1,96 @@
+"use client";
+
+import * as React from "react";
+import { cn } from "@/lib/utils";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowLeftIcon, ArrowRightIcon } from "@radix-ui/react-icons";
+
+const testimonials = [
+  {
+    body: "The fastest hires we've made were also the most considered. Plumb's live candidate scoring helped us spend less time on manual screening and more time making great hires.",
+    author: "Recruiting Lead",
+  },
+  {
+    body: "Automating our outreach with Emergence has doubled our response rate. We're now reaching top-tier talent that used to ignore our manual emails.",
+    author: "Head of Talent",
+  },
+  {
+    body: "The analytics and insights have finally given us a clear view of our hiring funnel. We identified a bottleneck in our technical interview stage that we never noticed before.",
+    author: "VP of Engineering",
+  },
+  {
+    body: "The AI parsing is incredibly accurate. It picks up nuances in resumes that other tools missed, helping us match candidates to roles perfectly.",
+    author: "Senior Recruiter",
+  },
+];
+
+export function Quotes() {
+  const [current, setCurrent] = React.useState(0);
+
+  const next = () => setCurrent((prev) => (prev + 1) % testimonials.length);
+  const prev = () => setCurrent((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+
+  return (
+    <section className="py-24">
+      <div className="max-w-6xl mx-auto px-4">
+        <div className="relative group">
+          <div
+            className={cn(
+              "relative min-h-[500px] flex flex-col justify-center overflow-hidden rounded-[2.5rem] p-12 md:p-20 transition-all duration-500",
+              "bg-[#0a0a0a] border border-neutral-800"
+            )}
+          >
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={current}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+                className="flex flex-col items-center text-center"
+              >
+                <blockquote className="text-2xl md:text-3xl font-medium leading-relaxed italic text-neutral-200">
+                  &quot;{testimonials[current].body}&quot;
+                </blockquote>
+                <figcaption className="mt-8 flex items-center gap-3 text-sm font-semibold tracking-widest uppercase text-neutral-500">
+                  <span className="h-px w-6 bg-[#99ff66]" />
+                  {testimonials[current].author}
+                </figcaption>
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Navigation Arrows */}
+            <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-6 pointer-events-none">
+              <button
+                onClick={prev}
+                className="pointer-events-auto h-12 w-12 flex items-center justify-center rounded-full bg-neutral-900 border border-neutral-800 text-white transition-all hover:bg-neutral-800 hover:scale-110 active:scale-95 shadow-xl"
+              >
+                <ArrowLeftIcon className="h-6 w-6" />
+              </button>
+              <button
+                onClick={next}
+                className="pointer-events-auto h-12 w-12 flex items-center justify-center rounded-full bg-neutral-900 border border-neutral-800 text-white transition-all hover:bg-neutral-800 hover:scale-110 active:scale-95 shadow-xl"
+              >
+                <ArrowRightIcon className="h-6 w-6" />
+              </button>
+            </div>
+
+            {/* Pagination Dots */}
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3">
+              {testimonials.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrent(idx)}
+                  className={cn(
+                    "h-2 transition-all duration-300 rounded-full",
+                    current === idx ? "w-8 bg-[#99ff66]" : "w-2 bg-neutral-700 hover:bg-neutral-500"
+                  )}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
