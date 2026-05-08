@@ -389,11 +389,11 @@ export function OpsStoryboard() {
               <div className="px-4 py-1 rounded-full border border-blue-500/30 bg-blue-500/5 text-blue-500 text-[10px] font-bold tracking-[0.4em] uppercase inline-block">
                 Daily Operations
               </div>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-header font-bold leading-tight">
+              <h2 className="text-5xl md:text-6xl lg:text-7xl font-playfair font-bold leading-tight">
                 The Operator <br />
                 <span className="italic text-[#99ff66]">Checklist.</span>
               </h2>
-              <p className="text-white/40 text-lg leading-relaxed font-subtext">
+              <p className="text-white/40 text-lg leading-relaxed max-w-sm">
                 Consistency is the only metric that matters. Run the playbook every morning.
               </p>
               
@@ -447,23 +447,28 @@ export function OpsStoryboard() {
     </section>
 
     {/* Escalation Tree Section */}
-    <section className="py-32 bg-background border-t border-white/5">
+    <section className="py-32 bg-[#050505] border-t border-white/5">
        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-20">
-             <h2 className="text-4xl md:text-5xl font-header font-bold mb-6">Escalation Tree</h2>
-             <p className="text-muted-foreground">Know who to call when the system breaks.</p>
+          <div className="text-center mb-20 space-y-4">
+             <h2 className="text-5xl md:text-6xl font-playfair font-bold text-white">Escalation Tree</h2>
+             <p className="text-white/40 text-sm font-mono tracking-widest uppercase">Know who to call when the system breaks.</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
              {[
-               { title: "Hub Bug", contact: "#hiring-alerts", desc: "System errors or UI bugs in the Hub." },
-               { title: "Data Issue", contact: "Dev Team", desc: "Hub disagrees with Ashby source data." },
-               { title: "HM Friction", contact: "Ops Lead", desc: "People issues with Hiring Managers." },
-               { title: "Off-Hours", contact: "Morning Sync", desc: "It can wait unless an offer is blocked." }
+               { tag: "HUB BUG", contact: "#hiring-alerts", desc: "System errors or UI bugs in the Hub." },
+               { tag: "DATA ISSUE", contact: "Dev Team", desc: "Hub disagrees with Ashby source data." },
+               { tag: "HM FRICTION", contact: "Ops Lead", desc: "People issues with Hiring Managers." },
+               { tag: "OFF-HOURS", contact: "Morning Sync", desc: "It can wait unless an offer is blocked." }
              ].map((item, i) => (
-               <div key={i} className="p-8 border border-border rounded-3xl bg-card hover:border-blue-500/40 transition-colors">
-                  <div className="text-[10px] font-mono text-blue-500 uppercase tracking-widest mb-4">{item.title}</div>
-                  <div className="text-xl font-bold mb-4">{item.contact}</div>
-                  <p className="text-sm text-muted-foreground">{item.desc}</p>
+               <div key={i} className="p-10 border border-white/5 rounded-[2.5rem] bg-[#0d0d0d] hover:bg-[#111111] hover:border-blue-500/20 transition-all group flex flex-col justify-between min-h-[220px]">
+                  <div>
+                    <div className="text-[9px] font-black text-blue-500 uppercase tracking-[0.3em] mb-6 flex items-center gap-2">
+                       <span className="w-1 h-1 rounded-full bg-blue-500" />
+                       {item.tag}
+                    </div>
+                    <div className="text-2xl font-bold text-white mb-4 group-hover:text-blue-400 transition-colors">{item.contact}</div>
+                  </div>
+                  <p className="text-sm text-white/30 leading-relaxed">{item.desc}</p>
                </div>
              ))}
           </div>

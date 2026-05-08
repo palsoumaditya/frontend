@@ -87,8 +87,11 @@ export default function Hero() {
         <InteractiveHoverButton className="bg-[#99ff66] text-black border-none px-6 py-2.5 text-sm font-subheader">
           Run /newjd in Slack
         </InteractiveHoverButton>
-        <InteractiveHoverButton className="bg-white dark:bg-neutral-900 text-black dark:text-white border-gray-200 dark:border-neutral-800 px-6 py-2.5 text-sm font-subheader">
-          Open the Hiring Hub
+        <InteractiveHoverButton 
+          onClick={() => window.location.href = '/manager'}
+          className="bg-white dark:bg-neutral-900 text-black dark:text-white border-gray-200 dark:border-neutral-800 px-6 py-2.5 text-sm font-subheader"
+        >
+          For Hiring Managers
         </InteractiveHoverButton>
       </motion.div>
       <motion.p

@@ -16,7 +16,7 @@ export default function ManagerHero() {
           transition={{ duration: 0.6 }}
           className="lg:col-span-7 bg-[#0a0a0a] rounded-[2.5rem] p-12 md:p-16 border border-neutral-800 shadow-2xl flex flex-col justify-center min-h-[550px]"
         >
-          <h1 className="text-5xl md:text-7xl font-pt-serif font-bold text-white leading-[1.1] mb-8">
+          <h1 className="text-6xl md:text-8xl font-playfair font-bold text-white leading-[1.1] mb-8">
             Less hiring. <br />
             <span className="relative inline-block italic">
               More hires.

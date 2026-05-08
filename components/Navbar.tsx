@@ -21,21 +21,13 @@ export function AppNavbar() {
   const router = useRouter();
   const navItems = [
     {
-      name: "How it works",
-      link: "#how-it-works",
+      name: "Home",
+      link: "/",
     },
     {
       name: "For HMs",
       link: "/manager",
-    },
-    {
-      name: "For Ops",
-      link: "/ops",
-    },
-    {
-      name: "Contact",
-      link: "#contact",
-    },
+    }
   ];
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -44,7 +36,9 @@ export function AppNavbar() {
     <Navbar>
       {/* Desktop Navigation */}
       <NavBody>
-        <NavbarLogo />
+        <a href="/" className="hover:opacity-80 transition-opacity">
+          <NavbarLogo />
+        </a>
         <NavItems items={navItems} />
         <div className="flex items-center gap-4">
           <TogglerWrapper />
@@ -54,7 +48,9 @@ export function AppNavbar() {
       {/* Mobile Navigation */}
       <MobileNav>
         <MobileNavHeader>
-          <NavbarLogo />
+          <a href="/" className="hover:opacity-80 transition-opacity">
+            <NavbarLogo />
+          </a>
           <div className="flex items-center gap-2">
             <TogglerWrapper />
             <MobileNavToggle

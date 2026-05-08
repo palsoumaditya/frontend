@@ -4,6 +4,8 @@ import React, { useState, useMemo, useRef } from "react";
 import { motion, AnimatePresence, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Marquee } from "./ui/marquee";
+import { HiringManual } from "./HiringManual";
+import { BookOpen } from "lucide-react";
 
 const scenes = [
   {
@@ -53,6 +55,7 @@ const scenes = [
 export function ManagerStoryboard() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeIdx, setActiveIdx] = useState(0);
+  const [isManualOpen, setIsManualOpen] = useState(false);
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -304,11 +307,11 @@ export function ManagerStoryboard() {
               <div className="px-4 py-1 rounded-full border border-[#99ff66]/30 bg-[#99ff66]/5 text-[#99ff66] text-[10px] font-bold tracking-[0.4em] uppercase inline-block">
                 The Partnership
               </div>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-header font-bold leading-tight">
+              <h2 className="text-5xl md:text-6xl lg:text-7xl font-playfair font-bold leading-tight">
                 The Hiring <br />
                 Manager <span className="italic text-[#99ff66]">SOP.</span>
               </h2>
-              <p className="text-white/40 text-lg leading-relaxed font-subtext">
+              <p className="text-white/40 text-lg leading-relaxed max-w-sm">
                 We handle the noise. You handle the decisions. A clear breakdown of our shared mission.
               </p>
               
@@ -321,6 +324,14 @@ export function ManagerStoryboard() {
                   <div className="w-1.5 h-1.5 rounded-full bg-[#3b82f6]" />
                   <span>SECURE SLACK CHANNEL</span>
                 </div>
+                
+                <button 
+                  onClick={() => setIsManualOpen(true)}
+                  className="flex items-center gap-3 bg-white text-black rounded-2xl px-6 py-4 text-sm font-bold hover:scale-105 active:scale-95 transition-all shadow-xl group w-full sm:w-fit"
+                >
+                  <BookOpen className="w-4 h-4 text-black/50 group-hover:text-[#99ff66] transition-colors" />
+                  Read Full Hiring Manual
+                </button>
               </div>
             </motion.div>
           </div>
@@ -386,6 +397,11 @@ export function ManagerStoryboard() {
         </motion.div>
       </div>
     </section>
+
+    <HiringManual 
+      isOpen={isManualOpen} 
+      onClose={() => setIsManualOpen(false)} 
+    />
     </>
   );
 }

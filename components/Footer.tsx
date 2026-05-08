@@ -51,10 +51,10 @@ export function Footer({ hideCTA = false }: FooterProps) {
           </div>
 
           <div className="flex items-center gap-8">
-            {["HOW IT WORKS", "FOR HMS", "FOR OPS", "CONTACT"].map((link) => (
+            {["FOR HMS"].map((link) => (
               <a
                 key={link}
-                href="#"
+                href="/manager"
                 className="text-[10px] font-subtext font-bold tracking-[0.1em] text-muted-foreground hover:text-[#99ff66] transition-colors"
               >
                 {link}
