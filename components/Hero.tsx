@@ -23,7 +23,7 @@ export default function Hero() {
         transition={{ duration: 0.5 }}
         className="mb-8"
       >
-        <Badge variant="outline" className="px-4 py-1.5 rounded-full border-gray-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 text-gray-600 dark:text-neutral-400 font-subheader flex items-center gap-2 shadow-sm">
+        <Badge variant="outline" className="px-4 py-1.5 rounded-full border-gray-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 text-gray-600 dark:text-neutral-400 font-bebas tracking-[0.2em] flex items-center gap-2 shadow-sm text-[11px] font-bold">
           <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
           PLUMB. THE HIRING ENGINE INSIDE EMERGENCE.
         </Badge>
@@ -36,7 +36,7 @@ export default function Hero() {
         transition={{ duration: 0.5, delay: 0.1 }}
         className="max-w-7xl mb-10"
       >
-        <h1 className="text-4xl md:text-5xl lg:text-7xl font-header tracking-tight leading-[1.1] md:leading-[1.1] text-[#1a1a1a] dark:text-white">
+        <h1 className="text-5xl md:text-7xl lg:text-9xl font-bold tracking-tighter leading-[0.9] text-[#1a1a1a] dark:text-white uppercase">
           <span className="relative inline-block">
             Less hiring.
             <motion.span
@@ -71,7 +71,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="text-gray-500 dark:text-neutral-400 text-lg md:text-xl max-w-2xl mb-10 leading-relaxed font-subtext"
+        className="text-gray-500 dark:text-neutral-400 text-lg md:text-xl max-w-2xl mb-10 leading-relaxed font-archivo"
       >
         Brief once. Get a ranked shortlist back. Make the call. <br />
         Plumb is the engine that runs your funnel inside Slack.
@@ -84,12 +84,12 @@ export default function Hero() {
         transition={{ duration: 0.5, delay: 0.3 }}
         className="flex flex-col sm:flex-row gap-4 mb-4"
       >
-        <InteractiveHoverButton className="bg-[#99ff66] text-black border-none px-6 py-2.5 text-sm font-subheader">
+        <InteractiveHoverButton className="bg-[#99ff66] text-black border-none px-10 py-5 text-[11px] font-bold uppercase tracking-widest font-bebas shadow-xl">
           Run /newjd in Slack
         </InteractiveHoverButton>
         <InteractiveHoverButton 
           onClick={() => window.location.href = '/manager'}
-          className="bg-white dark:bg-neutral-900 text-black dark:text-white border-gray-200 dark:border-neutral-800 px-6 py-2.5 text-sm font-subheader"
+          className="bg-white dark:bg-neutral-900 text-black dark:text-white border-gray-200 dark:border-neutral-800 px-10 py-5 text-[11px] font-bold uppercase tracking-widest font-bebas shadow-xl"
         >
           For Hiring Managers
         </InteractiveHoverButton>
@@ -98,7 +98,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.35 }}
-        className="text-[10px] uppercase tracking-widest text-gray-400 font-bold mb-8 font-subtext"
+        className="text-[10px] uppercase tracking-[0.4em] text-gray-400 font-bold mb-8 font-bebas"
       >
         No demo. No deck. Slack only. Email fallback recruitment at emsoft dot com.
       </motion.p>

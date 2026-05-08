@@ -46,10 +46,10 @@ export function Stats() {
     <section className="py-24">
       <div className="max-w-6xl mx-auto px-4">
         <div className="mb-16 max-w-2xl">
-          <span className="text-[10px] font-subtext font-bold tracking-[0.2em] text-neutral-400 uppercase block mb-4">
+          <span className="text-[11px] font-bold tracking-[0.3em] text-neutral-400 uppercase block mb-4 font-bebas">
             The clock, honest.
           </span>
-          <h2 className="text-3xl md:text-4xl font-header font-bold text-neutral-900 dark:text-white mb-6">
+          <h2 className="text-5xl md:text-7xl font-bold text-neutral-900 dark:text-white mb-6 leading-[0.95] tracking-tighter uppercase font-bebas">
             Real timelines from the SOP. Not vibes.
           </h2>
         </div>
@@ -67,25 +67,25 @@ export function Stats() {
               <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#99ff66] scale-y-0 transition-transform duration-300 origin-top group-hover:scale-y-100" />
 
               <div className="md:col-span-4 transition-transform duration-300 group-hover:translate-x-2">
-                <span className="text-[10px] font-subtext font-bold tracking-[0.2em] text-neutral-400 uppercase mb-3 block">
+                <span className="text-[11px] font-bold tracking-[0.2em] text-neutral-400 uppercase mb-3 block font-bebas">
                   {item.category}
                 </span>
-                <h3 className="text-2xl font-subheader font-bold text-neutral-900 dark:text-white leading-tight">
+                <h3 className="text-3xl font-bold text-neutral-900 dark:text-white leading-[1.1] uppercase font-bebas tracking-tight">
                   {item.title}
                 </h3>
               </div>
 
               <div className="md:col-span-5">
-                <p className="text-sm font-subtext text-neutral-500 dark:text-neutral-400 leading-relaxed">
+                <p className="text-base font-archivo text-neutral-500 dark:text-neutral-400 leading-relaxed">
                   {item.description}
                 </p>
               </div>
 
               <div className="md:col-span-3 flex flex-col items-start md:items-end justify-center">
-                <span className="text-4xl md:text-5xl font-subheader font-bold text-[#99ff66] leading-none mb-2">
+                <span className="text-5xl md:text-7xl font-bold text-[#99ff66] leading-none mb-2 font-bebas tracking-tighter">
                   {item.stat}
                 </span>
-                <span className="text-xs font-subtext font-medium text-neutral-400 text-left md:text-right">
+                <span className="text-[10px] font-bold text-neutral-400 text-left md:text-right uppercase tracking-widest font-bebas">
                   {item.statLabel}
                 </span>
               </div>
@@ -93,7 +93,7 @@ export function Stats() {
           ))}
         </div>
         <div className="mt-8 text-left">
-          <p className="text-[10px] font-subtext text-neutral-400 uppercase tracking-widest italic">
+          <p className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest italic font-archivo opacity-50">
             Target means we are tracking it and improving it. Not a brag.
           </p>
         </div>

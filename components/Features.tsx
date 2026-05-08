@@ -50,12 +50,12 @@ const ScoringItem = ({ name, description, icon, color, time }: typeof scoringNot
         <span className="text-sm">{icon}</span>
       </div>
       <div className="flex flex-col overflow-hidden">
-        <figcaption className="flex flex-row items-center whitespace-pre text-sm font-subheader font-medium dark:text-white">
-          <span className="text-sm">{name}</span>
+        <figcaption className="flex flex-row items-center whitespace-pre text-sm font-archivo font-bold dark:text-white">
+          <span className="text-sm uppercase font-bebas tracking-tight">{name}</span>
           <span className="mx-1">·</span>
-          <span className="text-xs font-subtext text-gray-500">{time}</span>
+          <span className="text-[10px] font-bebas font-bold text-gray-500 uppercase tracking-widest">{time}</span>
         </figcaption>
-        <p className="text-xs font-subtext font-normal text-neutral-500 dark:text-white/60">{description}</p>
+        <p className="text-xs font-archivo font-medium text-neutral-500 dark:text-white/60">{description}</p>
       </div>
     </div>
   </figure>
@@ -92,10 +92,10 @@ const OutreachBeamViz = () => {
     >
       <div className="flex size-full max-w-sm items-center justify-between px-10">
         <div className="flex flex-col gap-4">
-          <BeamCircle ref={r1}><span className="text-xs font-bold text-blue-500">LI</span></BeamCircle>
-          <BeamCircle ref={r2}><span className="text-xs font-bold text-sky-400">EM</span></BeamCircle>
-          <BeamCircle ref={r3}><span className="text-xs font-bold text-green-500">GH</span></BeamCircle>
-          <BeamCircle ref={r4}><span className="text-xs font-bold text-orange-400">IN</span></BeamCircle>
+          <BeamCircle ref={r1}><span className="text-[11px] font-bold text-blue-500 font-bebas">LI</span></BeamCircle>
+          <BeamCircle ref={r2}><span className="text-[11px] font-bold text-sky-400 font-bebas">EM</span></BeamCircle>
+          <BeamCircle ref={r3}><span className="text-[11px] font-bold text-green-500 font-bebas">GH</span></BeamCircle>
+          <BeamCircle ref={r4}><span className="text-[11px] font-bold text-orange-400 font-bebas">IN</span></BeamCircle>
         </div>
         <BeamCircle ref={centerRef} className="size-14 border-2">
           <MailIcon className="h-5 w-5 text-neutral-600" />
@@ -112,9 +112,9 @@ const OutreachBeamViz = () => {
 // --- Analytics bars (Analytics & Insights) ---
 const AnalyticsBars = () => (
   <div className="absolute top-6 right-6 left-6 flex flex-col gap-2 [mask-image:linear-gradient(to_bottom,#000_60%,transparent_100%)]">
-    <div className="flex items-center justify-between text-xs text-neutral-400 mb-1">
+    <div className="flex items-center justify-between text-[11px] text-neutral-400 mb-1 font-bebas tracking-widest uppercase font-bold">
       <span>Decisions logged</span>
-      <span className="font-semibold text-neutral-700 dark:text-neutral-200">1,240</span>
+      <span className="font-bold text-neutral-700 dark:text-neutral-200">1,240</span>
     </div>
     {[80, 55, 90, 40, 70, 60].map((w, i) => (
       <div key={i} className="flex items-center gap-2">
@@ -148,8 +148,8 @@ const features = [
               "transform-gpu blur-[1px] transition-all duration-300 ease-out group-hover:blur-none"
             )}
           >
-            <figcaption className="text-xs font-semibold text-neutral-700 dark:text-neutral-200 truncate">{f.name}</figcaption>
-            <blockquote className="mt-1 text-[10px] text-neutral-500 line-clamp-3">{f.body}</blockquote>
+            <figcaption className="text-[11px] font-bold text-neutral-700 dark:text-neutral-200 truncate font-bebas uppercase tracking-tight">{f.name}</figcaption>
+            <blockquote className="mt-1 text-[10px] text-neutral-500 line-clamp-3 font-archivo">{f.body}</blockquote>
           </figure>
         ))}
       </Marquee>
@@ -199,12 +199,12 @@ export function Features() {
   return (
     <section className="max-w-6xl mx-auto px-4 py-24">
       <div className="mb-12">
-        <h3 className="text-sm font-subtext font-bold tracking-widest text-neutral-500 uppercase">
+        <h3 className="text-[11px] font-bold tracking-[0.3em] text-neutral-500 uppercase font-bebas">
           Why teams keep it on
         </h3>
-        <h2 className="mt-4 text-3xl md:text-4xl font-header font-bold text-neutral-900 dark:text-white">
+        <h2 className="mt-4 text-5xl md:text-7xl font-bold text-neutral-900 dark:text-white leading-[0.95] tracking-tighter uppercase">
           Four jobs Plumb does <br />
-          <span className="text-neutral-400 italic">so you do not have to.</span>
+          <span className="text-[#99ff66] italic">so you do not have to.</span>
         </h2>
       </div>
       <BentoGrid>

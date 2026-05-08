@@ -62,11 +62,11 @@ export function CandidateEngine() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-3xl md:text-5xl font-header font-bold text-neutral-900 dark:text-white mb-8 leading-[1.1]">
+              <h2 className="text-5xl md:text-7xl font-bold text-neutral-900 dark:text-white mb-8 leading-[0.95] tracking-tighter uppercase">
                 The engine, <br />
                 <span className="text-[#99ff66] italic">mid-shift.</span>
               </h2>
-              <p className="text-lg font-subtext text-neutral-500 dark:text-neutral-400 leading-relaxed mb-12 max-w-lg">
+              <p className="text-lg font-archivo text-neutral-500 dark:text-neutral-400 leading-relaxed mb-12 max-w-lg">
                 Resumes come in. Plumb does the rest and delivers quality!
               </p>
 
@@ -83,11 +83,11 @@ export function CandidateEngine() {
                     transition={{ delay: idx * 0.1 }}
                     className="flex flex-col gap-2"
                   >
-                    <div className="flex items-center gap-2 text-[10px] font-subtext font-bold text-neutral-400 uppercase tracking-widest">
+                    <div className="flex items-center gap-2 text-[11px] font-bebas font-bold text-neutral-400 uppercase tracking-widest">
                       <stat.icon className={cn("h-3 w-3", stat.color)} />
                       {stat.label}
                     </div>
-                    <div className="text-3xl font-subheader font-bold text-neutral-900 dark:text-white">
+                    <div className="text-4xl font-bold text-neutral-900 dark:text-white font-bebas tracking-tight">
                       {stat.value}
                     </div>
                   </motion.div>
@@ -99,7 +99,7 @@ export function CandidateEngine() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 relative">
             {/* Inbound Stream */}
             <div className="space-y-6">
-              <div className="text-[10px] font-bold text-neutral-400 uppercase tracking-[0.25em] flex items-center gap-3">
+              <div className="text-[11px] font-bold text-neutral-400 uppercase tracking-[0.25em] flex items-center gap-3 font-bebas">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
@@ -115,16 +115,16 @@ export function CandidateEngine() {
                       className="w-full p-4 rounded-xl border border-neutral-200/50 dark:border-neutral-800/50 bg-white/80 dark:bg-neutral-900/80 backdrop-blur-md shadow-sm flex items-center justify-between group/item hover:border-[#99ff66]/30 transition-colors"
                     >
                       <div className="flex items-center gap-3">
-                        <div className="h-10 w-10 rounded-full bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center text-xs font-bold border border-neutral-200 dark:border-neutral-700">
+                        <div className="h-10 w-10 rounded-full bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center text-xs font-bold border border-neutral-200 dark:border-neutral-700 font-bebas">
                           {c.name.charAt(0)}
                         </div>
                         <div className="overflow-hidden">
-                          <div className="text-sm font-subheader font-bold text-neutral-900 dark:text-white truncate">{c.name}</div>
-                          <div className="text-[10px] font-subtext text-neutral-500 font-medium truncate">{c.role}</div>
+                          <div className="text-sm font-bold text-neutral-900 dark:text-white truncate font-archivo">{c.name}</div>
+                          <div className="text-[10px] text-neutral-500 font-medium truncate font-archivo">{c.role}</div>
                         </div>
                       </div>
                       <div className={cn(
-                        "text-sm font-subheader font-bold",
+                        "text-lg font-bold font-bebas tracking-tighter",
                         c.score >= 85 ? "text-green-500" : c.score >= 70 ? "text-yellow-500" : "text-red-500"
                       )}>
                         {c.score}
@@ -139,7 +139,7 @@ export function CandidateEngine() {
 
             {/* Shortlist */}
             <div className="space-y-6">
-              <div className="text-[10px] font-bold text-[#99ff66] uppercase tracking-[0.25em] flex items-center gap-3">
+              <div className="text-[11px] font-bold text-[#99ff66] uppercase tracking-[0.25em] flex items-center gap-3 font-bebas">
                 <Star className="h-3 w-3 fill-[#99ff66]" />
                 Shortlist
               </div>
@@ -154,18 +154,18 @@ export function CandidateEngine() {
                       className="p-5 rounded-2xl border border-[#99ff66]/20 bg-[#99ff66]/5 backdrop-blur-sm shadow-[0_0_20px_rgba(153,255,102,0.05)] flex items-center justify-between group"
                     >
                       <div className="flex items-center gap-4">
-                        <div className="text-[10px] font-bold text-[#99ff66]/60">0{idx + 1}</div>
-                        <div className="h-10 w-10 rounded-full bg-[#99ff66] text-black flex items-center justify-center text-sm font-bold shadow-[0_0_15px_rgba(153,255,102,0.3)]">
+                        <div className="text-[11px] font-bold text-[#99ff66]/60 font-bebas">0{idx + 1}</div>
+                        <div className="h-10 w-10 rounded-full bg-[#99ff66] text-black flex items-center justify-center text-sm font-bold shadow-[0_0_15px_rgba(153,255,102,0.3)] font-bebas">
                           {c.name.charAt(0)}
                         </div>
                         <div>
-                          <div className="text-sm font-subheader font-bold text-neutral-900 dark:text-white group-hover:text-[#99ff66] transition-colors">
+                          <div className="text-sm font-bold text-neutral-900 dark:text-white group-hover:text-[#99ff66] transition-colors font-archivo">
                             {c.name}
                           </div>
-                          <div className="text-[10px] font-subtext text-[#99ff66]/80 font-bold uppercase tracking-wider">Shortlisted</div>
+                          <div className="text-[10px] font-bold text-[#99ff66]/80 uppercase tracking-wider font-bebas">Shortlisted</div>
                         </div>
                       </div>
-                      <div className="text-base font-subheader font-bold text-neutral-900 dark:text-white">{c.score}%</div>
+                      <div className="text-xl font-bold text-neutral-900 dark:text-white font-bebas tracking-tighter">{c.score}%</div>
                     </motion.div>
                   ))}
                 </AnimatePresence>
@@ -179,8 +179,8 @@ export function CandidateEngine() {
                     <div className="w-12 h-12 rounded-full bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center mb-4">
                       <Trophy className="h-6 w-6 text-neutral-400" />
                     </div>
-                    <div className="text-sm font-subheader font-bold text-neutral-500 mb-1">Waiting on the next batch.</div>
-                    <div className="text-[10px] font-subtext text-neutral-400 uppercase tracking-widest">Plumb is awake.</div>
+                    <div className="text-sm font-bold text-neutral-500 mb-1 font-archivo">Waiting on the next batch.</div>
+                    <div className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest font-bebas">Plumb is awake.</div>
                   </motion.div>
                 )}
               </div>
@@ -188,7 +188,7 @@ export function CandidateEngine() {
           </div>
         </div>
         <div className="mt-20 text-center">
-          <p className="text-[10px] font-subtext text-neutral-400 uppercase tracking-[0.2em]">
+          <p className="text-[11px] font-bold text-neutral-400 uppercase tracking-[0.2em] font-bebas">
             Sample stream. Real candidates never appear on the public page.
           </p>
         </div>

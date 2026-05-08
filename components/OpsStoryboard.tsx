@@ -116,17 +116,17 @@ export function OpsStoryboard() {
                   transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
                   className="space-y-8"
                 >
-                  <div className="font-mono text-xs text-[#3b82f6] font-bold tracking-[0.4em] uppercase opacity-70">
+                  <div className="font-bebas text-[11px] text-[#3b82f6] font-bold tracking-[0.4em] uppercase opacity-70">
                     Scene // {scenes[activeIdx].num}
                   </div>
-                  <h2 className="text-4xl md:text-6xl lg:text-7xl font-header font-bold text-foreground leading-[1.1]">
+                  <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold text-foreground leading-[0.95] tracking-tighter uppercase">
                     {scenes[activeIdx].title}
                   </h2>
-                  <p className="text-muted-foreground text-lg md:text-xl leading-relaxed font-subtext max-w-lg">
+                  <p className="text-muted-foreground text-lg md:text-xl leading-relaxed font-archivo max-w-lg">
                     {scenes[activeIdx].copy}
                   </p>
                   {scenes[activeIdx].cta && (
-                    <button className="text-foreground font-bold flex items-center gap-2 group text-sm uppercase tracking-widest border-b-2 border-[#3b82f6]/20 hover:border-[#3b82f6] transition-all pb-1 w-fit">
+                    <button className="text-foreground font-bold flex items-center gap-2 group text-[11px] uppercase tracking-widest border-b-2 border-[#3b82f6]/20 hover:border-[#3b82f6] transition-all pb-1 w-fit font-bebas">
                       {scenes[activeIdx].cta}
                       <span className="group-hover:translate-x-1 transition-transform">→</span>
                     </button>
@@ -158,18 +158,18 @@ export function OpsStoryboard() {
                              <div className="w-16 h-16 rounded-full bg-blue-500/20 border border-blue-500/40 flex items-center justify-center">
                                <div className="w-2 h-2 rounded-full bg-blue-500 animate-ping" />
                              </div>
-                             <span className="text-[10px] font-mono uppercase tracking-widest text-white/40">Inbound</span>
+                             <span className="text-[10px] font-bebas uppercase tracking-widest text-white/40">Inbound</span>
                            </div>
                            <div className="flex flex-col items-center gap-4">
                              <div className="w-16 h-16 rounded-full bg-[#99ff66]/20 border border-[#99ff66]/40 flex items-center justify-center">
                                <div className="w-2 h-2 rounded-full bg-[#99ff66] animate-ping" />
                              </div>
-                             <span className="text-[10px] font-mono uppercase tracking-widest text-white/40">Outbound</span>
+                             <span className="text-[10px] font-bebas uppercase tracking-widest text-white/40">Outbound</span>
                            </div>
                         </div>
                         <div className="w-48 h-64 border-2 border-white/5 rounded-3xl bg-white/[0.02] flex items-center justify-center relative overflow-hidden">
                            <div className="absolute inset-0 bg-gradient-to-t from-blue-500/10 to-transparent" />
-                           <span className="text-xs font-bold uppercase tracking-[0.3em] text-white/60">The Funnel</span>
+                           <span className="text-xs font-bold uppercase tracking-[0.3em] text-white/60 font-bebas">The Funnel</span>
                         </div>
                       </div>
                     )}
@@ -180,7 +180,7 @@ export function OpsStoryboard() {
                         <div className="flex-1 bg-[#111111] border border-white/5 rounded-[32px] p-8 shadow-2xl relative overflow-hidden">
                           <div className="flex justify-between items-center mb-12">
                             <div className="h-4 w-40 bg-white/10 rounded-full" />
-                            <div className="bg-blue-500 text-white text-[9px] font-black px-3 py-1 rounded-full uppercase">Inbound</div>
+                            <div className="bg-blue-500 text-white text-[9px] font-black px-3 py-1 rounded-full uppercase font-bebas">Inbound</div>
                           </div>
                           <div className="space-y-6">
                             {[1,2,3,4,5].map(i => (
@@ -206,7 +206,7 @@ export function OpsStoryboard() {
                         <div className="flex-1 bg-[#111111] border border-white/5 rounded-[32px] p-8 shadow-2xl relative overflow-hidden">
                           <div className="flex justify-between items-center mb-12">
                             <div className="h-4 w-40 bg-white/10 rounded-full" />
-                            <div className="bg-[#99ff66] text-black text-[9px] font-black px-3 py-1 rounded-full uppercase">Outbound</div>
+                            <div className="bg-[#99ff66] text-black text-[9px] font-black px-3 py-1 rounded-full uppercase font-bebas">Outbound</div>
                           </div>
                           <div className="grid grid-cols-2 gap-4">
                             {[1,2,3,4,5,6].map(i => (
@@ -230,10 +230,10 @@ export function OpsStoryboard() {
                     {scenes[activeIdx].id === "ops-scores" && (
                       <div className="w-full flex flex-col items-center">
                          <div className="flex items-baseline gap-2">
-                           <NumberTicker value={87} className="text-8xl font-subheader font-bold text-[#99ff66]" />
-                           <span className="text-2xl font-subheader font-bold text-[#99ff66]/40">/100</span>
+                           <NumberTicker value={87} className="text-8xl font-bold text-[#99ff66] font-bebas tracking-tighter" />
+                           <span className="text-2xl font-bold text-[#99ff66]/40 font-bebas">/100</span>
                          </div>
-                         <div className="text-xs font-mono uppercase tracking-[0.5em] text-white/40 mb-12">Fit Score Signal</div>
+                         <div className="text-xs font-bold uppercase tracking-[0.5em] text-white/40 mb-12 font-bebas">Fit Score Signal</div>
                          <div className="flex gap-3">
                             {["deep platform exp", "ic signal strong", "us based"].map((label, i) => (
                               <motion.div 
@@ -241,7 +241,7 @@ export function OpsStoryboard() {
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.5 + i * 0.1 }}
-                                className="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-[10px] font-bold text-white/60 uppercase tracking-widest"
+                                className="px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-[10px] font-bold text-white/60 uppercase tracking-widest font-bebas"
                               >
                                 {label}
                               </motion.div>
@@ -255,8 +255,8 @@ export function OpsStoryboard() {
                       <div className="w-full h-full flex flex-col p-4">
                         <div className="flex-1 bg-[#0a0a0a] border border-white/10 rounded-[32px] p-8 shadow-2xl relative flex flex-col">
                            <div className="flex gap-4 mb-8">
-                             <div className="px-4 py-2 bg-blue-500 rounded-lg text-[10px] font-bold uppercase tracking-widest">Screening</div>
-                             <div className="px-4 py-2 bg-white/5 rounded-lg text-[10px] font-bold uppercase tracking-widest text-white/40">Shortlisting</div>
+                             <div className="px-4 py-2 bg-blue-500 rounded-lg text-[10px] font-bold uppercase tracking-widest font-bebas">Screening</div>
+                             <div className="px-4 py-2 bg-white/5 rounded-lg text-[10px] font-bold uppercase tracking-widest text-white/40 font-bebas">Shortlisting</div>
                            </div>
                            <div className="flex-1 space-y-4">
                               {[1,2,3].map(i => (
@@ -289,7 +289,7 @@ export function OpsStoryboard() {
                               X
                             </motion.div>
                             <motion.div 
-                              className="w-24 h-24 rounded-2xl bg-[#99ff66]/20 border border-[#99ff66]/40 flex items-center justify-center text-[#99ff66] font-bold text-2xl"
+                              className="w-24 h-24 rounded-2xl bg-[#99ff66]/20 border border-[#99ff66]/40 flex items-center justify-center text-[#99ff66] font-bold text-2xl font-bebas"
                             >
                               YES
                             </motion.div>
@@ -302,7 +302,7 @@ export function OpsStoryboard() {
                              className="h-full bg-amber-500"
                            />
                          </div>
-                         <span className="text-[10px] font-mono text-white/40 uppercase tracking-widest">HM Attention Clock: 48h</span>
+                         <span className="text-[10px] font-bold text-white/40 uppercase tracking-widest font-bebas">HM Attention Clock: 48h</span>
                       </div>
                     )}
 
@@ -321,8 +321,8 @@ export function OpsStoryboard() {
                                     <div className="w-2 h-2 rounded-full bg-white animate-pulse" />
                                  </div>
                                  <div className="space-y-1">
-                                    <div className="text-sm font-bold text-white/80">{step.label}</div>
-                                    <div className="text-[10px] font-mono uppercase tracking-widest text-white/40">{step.status}</div>
+                                    <div className="text-sm font-bold text-white/80 font-archivo">{step.label}</div>
+                                    <div className="text-[10px] font-bold uppercase tracking-widest text-white/40 font-bebas">{step.status}</div>
                                  </div>
                               </div>
                             ))}
@@ -333,14 +333,14 @@ export function OpsStoryboard() {
                     {/* Scene 8: Watch Tower */}
                     {scenes[activeIdx].id === "ops-watchtower" && (
                       <div className="w-full h-full flex flex-col gap-6 p-4">
-                         <div className="flex-1 border border-white/10 rounded-2xl bg-[#0a0a0a] overflow-hidden relative">
+                         <div className="flex-1 border border-white/10 rounded-2xl bg-[#0a0a0a] overflow-hidden relative font-archivo">
                             <div className="p-4 border-b border-white/10 flex items-center justify-between">
-                               <span className="text-[10px] font-bold uppercase tracking-widest text-red-500">Alert Feed</span>
+                               <span className="text-[10px] font-bold uppercase tracking-widest text-red-500 font-bebas">Alert Feed</span>
                                <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
                             </div>
                             <Marquee vertical className="h-64 opacity-50" repeat={3}>
                                {[1,2,3,4,5].map(i => (
-                                 <div key={i} className="p-4 border-b border-white/5 text-[10px] font-mono text-white/40">
+                                 <div key={i} className="p-4 border-b border-white/5 text-[10px] font-mono text-white/40 uppercase tracking-tight">
                                    [CRITICAL] ROLE_ID_{i}02: MISSING_FIT_SCORE_THRESHOLD
                                  </div>
                                ))}
@@ -353,11 +353,11 @@ export function OpsStoryboard() {
                     {/* Scene 9: Success */}
                     {scenes[activeIdx].id === "ops-good" && (
                       <div className="w-full flex flex-col items-center">
-                         <div className="text-9xl font-header font-bold text-[#99ff66]">5</div>
-                         <div className="text-xl font-subheader font-bold text-white/80 -mt-4">DAYS</div>
-                         <div className="text-[10px] font-subtext font-mono uppercase tracking-[0.5em] text-white/40 mt-8">Avg. Time to Shortlist</div>
+                         <div className="text-9xl font-bold text-[#99ff66] font-bebas tracking-tighter">5</div>
+                         <div className="text-2xl font-bold text-white/80 -mt-4 font-bebas uppercase">DAYS</div>
+                         <div className="text-[10px] font-bold uppercase tracking-[0.5em] text-white/40 mt-8 font-bebas">Avg. Time to Shortlist</div>
                          <div className="mt-16 w-full h-32 border border-white/10 rounded-2xl bg-[#99ff66]/5 flex items-center justify-center">
-                            <span className="text-xs font-bold uppercase tracking-widest text-[#99ff66]">Playbook: COMPLETED</span>
+                            <span className="text-xs font-bold uppercase tracking-widest text-[#99ff66] font-bebas">Playbook: COMPLETED</span>
                          </div>
                       </div>
                     )}
@@ -386,19 +386,19 @@ export function OpsStoryboard() {
               viewport={{ once: true }}
               className="space-y-6"
             >
-              <div className="px-4 py-1 rounded-full border border-blue-500/30 bg-blue-500/5 text-blue-500 text-[10px] font-bold tracking-[0.4em] uppercase inline-block">
+              <div className="px-4 py-1.5 rounded-full border border-blue-500/30 bg-blue-500/5 text-blue-500 text-[11px] font-bold tracking-[0.4em] uppercase inline-block font-bebas">
                 Daily Operations
               </div>
-              <h2 className="text-5xl md:text-6xl lg:text-7xl font-playfair font-bold leading-tight">
+              <h2 className="text-6xl md:text-8xl font-bold leading-[0.95] tracking-tighter uppercase">
                 The Operator <br />
                 <span className="italic text-[#99ff66]">Checklist.</span>
               </h2>
-              <p className="text-white/40 text-lg leading-relaxed max-w-sm">
+              <p className="text-white/40 text-lg leading-relaxed max-w-sm font-archivo">
                 Consistency is the only metric that matters. Run the playbook every morning.
               </p>
               
               <div className="pt-8 flex flex-col gap-4">
-                <div className="flex items-center gap-3 text-xs font-mono text-white/20">
+                <div className="flex items-center gap-3 text-[10px] font-bold text-white/20 font-bebas tracking-widest">
                   <div className="w-1.5 h-1.5 rounded-full bg-blue-500" />
                   <span>VERSION 1.0 // OPS-RUNBOOK</span>
                 </div>
@@ -428,11 +428,11 @@ export function OpsStoryboard() {
                 <div className="bg-white/[0.03] border border-white/5 rounded-2xl p-6 md:p-8 hover:bg-white/[0.05] transition-all group-hover:border-blue-500/20">
                   <div className="flex items-start justify-between gap-6">
                     <div className="space-y-3">
-                      <div className="text-[10px] font-bold text-blue-500 uppercase tracking-widest">{item.timing}</div>
-                      <div className="text-2xl font-subheader font-bold text-white/90 leading-tight">
+                      <div className="text-[10px] font-bold text-blue-500 uppercase tracking-widest font-bebas">{item.timing}</div>
+                      <div className="text-3xl font-bold text-white/90 leading-tight uppercase font-bebas tracking-tight">
                         {item.task}
                       </div>
-                      <p className="text-white/40 text-sm font-subtext">{item.detail}</p>
+                      <p className="text-white/40 text-sm font-archivo">{item.detail}</p>
                     </div>
                     <div className="shrink-0 w-8 h-8 rounded-full border border-white/10 flex items-center justify-center">
                        <div className="w-2 h-2 rounded-full bg-blue-500/20 group-hover:bg-blue-500 transition-colors" />
@@ -450,8 +450,8 @@ export function OpsStoryboard() {
     <section className="py-32 bg-[#050505] border-t border-white/5">
        <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-20 space-y-4">
-             <h2 className="text-5xl md:text-6xl font-playfair font-bold text-white">Escalation Tree</h2>
-             <p className="text-white/40 text-sm font-mono tracking-widest uppercase">Know who to call when the system breaks.</p>
+             <h2 className="text-6xl md:text-8xl font-bold text-white tracking-tighter uppercase">Escalation Tree</h2>
+             <p className="text-white/40 text-sm font-bold tracking-widest uppercase font-bebas">Know who to call when the system breaks.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
              {[
@@ -462,13 +462,13 @@ export function OpsStoryboard() {
              ].map((item, i) => (
                <div key={i} className="p-10 border border-white/5 rounded-[2.5rem] bg-[#0d0d0d] hover:bg-[#111111] hover:border-blue-500/20 transition-all group flex flex-col justify-between min-h-[220px]">
                   <div>
-                    <div className="text-[9px] font-black text-blue-500 uppercase tracking-[0.3em] mb-6 flex items-center gap-2">
+                    <div className="text-[9px] font-bold text-blue-500 uppercase tracking-[0.3em] mb-6 flex items-center gap-2 font-bebas">
                        <span className="w-1 h-1 rounded-full bg-blue-500" />
                        {item.tag}
                     </div>
-                    <div className="text-2xl font-bold text-white mb-4 group-hover:text-blue-400 transition-colors">{item.contact}</div>
+                    <div className="text-3xl font-bold text-white mb-4 group-hover:text-blue-400 transition-colors font-bebas tracking-tight uppercase">{item.contact}</div>
                   </div>
-                  <p className="text-sm text-white/30 leading-relaxed">{item.desc}</p>
+                  <p className="text-sm text-white/30 leading-relaxed font-archivo">{item.desc}</p>
                </div>
              ))}
           </div>

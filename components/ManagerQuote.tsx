@@ -18,22 +18,22 @@ export function ManagerQuote() {
           className="relative pl-8 md:pl-16"
         >
           {/* Large decorative quote mark */}
-          <div className="absolute -left-4 -top-8 text-[120px] font-playfair italic text-[#99ff66]/10 leading-none select-none">
+          <div className="absolute -left-4 -top-8 text-[120px] font-archivo italic font-bold text-[#99ff66]/10 leading-none select-none">
             "
           </div>
 
           <div className="space-y-12">
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-playfair italic leading-[1.1] text-foreground">
-              "You keep the parts that matter: meeting great people, making the call. <span className="text-[#99ff66]">Plumb handles the noise.</span>"
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-archivo italic font-medium leading-[1.2] text-foreground tracking-tight">
+              "You keep the parts that matter: meeting great people, making the call. <span className="text-[#99ff66] not-italic font-bold">Plumb handles the noise.</span>"
             </h2>
             
             <div className="flex items-center gap-6">
               <div className="w-16 h-px bg-[#99ff66]/50" />
               <div className="space-y-1">
-                <p className="text-[12px] font-bold tracking-[0.4em] text-[#99ff66] uppercase">
+                <p className="text-[12px] font-bold tracking-[0.4em] text-[#99ff66] uppercase font-bebas">
                   THE PLUMB PROMISE
                 </p>
-                <p className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest">
+                <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest font-bebas">
                   Efficiency / Execution / Scale
                 </p>
               </div>

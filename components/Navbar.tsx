@@ -70,7 +70,7 @@ export function AppNavbar() {
               key={`mobile-link-${idx}`}
               href={item.link}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="relative text-neutral-600 font-subheader font-medium py-2"
+              className="relative text-neutral-600 font-bebas font-bold tracking-[0.1em] uppercase py-2 text-sm"
             >
               <span className="block">{item.name}</span>
             </a>

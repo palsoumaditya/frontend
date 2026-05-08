@@ -168,16 +168,16 @@ export function ManagerStoryboard() {
                 className="space-y-12"
               >
                 <div className="space-y-6">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-border/50 bg-muted/20 text-muted-foreground text-[10px] font-black tracking-[0.3em] uppercase">
+                  <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-border/50 bg-muted/20 text-muted-foreground text-[11px] font-bold tracking-[0.2em] uppercase font-bebas">
                     Step 0{activeIdx + 1}
                   </div>
                   
-                  <h2 className="text-5xl md:text-7xl font-playfair font-bold leading-tight tracking-tight">
+                  <h2 className="text-6xl md:text-8xl font-bold leading-[0.9] tracking-tighter uppercase">
                     {scenes[activeIdx].title} <br />
                     <span className="italic text-[#99ff66]">{scenes[activeIdx].highlight}</span>
                   </h2>
                   
-                  <p className="text-muted-foreground text-lg md:text-xl leading-relaxed max-w-2xl mx-auto font-subtext">
+                  <p className="text-muted-foreground text-lg md:text-xl leading-relaxed max-w-2xl mx-auto font-archivo">
                     {scenes[activeIdx].description}
                   </p>
                 </div>
@@ -185,8 +185,8 @@ export function ManagerStoryboard() {
                 <div className="flex flex-wrap justify-center gap-12">
                   {scenes[activeIdx].stats.map((stat, i) => (
                     <div key={i} className="space-y-1">
-                      <div className="text-3xl font-bold text-foreground">{stat.value}</div>
-                      <div className="text-[10px] font-black text-muted-foreground uppercase tracking-widest">{stat.label}</div>
+                      <div className="text-4xl font-bold text-foreground font-bebas tracking-tight">{stat.value}</div>
+                      <div className="text-[10px] font-bold text-muted-foreground uppercase tracking-[0.2em] font-bebas">{stat.label}</div>
                     </div>
                   ))}
                 </div>
@@ -209,24 +209,24 @@ export function ManagerStoryboard() {
               viewport={{ once: true }}
               className="space-y-8 max-w-2xl mx-auto"
             >
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#99ff66]/30 bg-[#99ff66]/10 dark:bg-[#99ff66]/5 text-[#99ff66] text-[10px] font-black tracking-[0.3em] uppercase">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#99ff66]/30 bg-[#99ff66]/10 dark:bg-[#99ff66]/5 text-[#99ff66] text-[11px] font-bold tracking-[0.2em] uppercase font-bebas">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#99ff66] animate-pulse" />
                 The Partnership
               </div>
               
-              <h2 className="text-5xl md:text-7xl font-playfair font-bold leading-tight tracking-tight">
+              <h2 className="text-6xl md:text-8xl font-bold leading-[0.9] tracking-tighter uppercase">
                 The Hiring Manager <br />
                 <span className="italic text-[#99ff66]">SOP.</span>
               </h2>
               
-              <p className="text-muted-foreground text-lg md:text-xl leading-relaxed font-subtext">
+              <p className="text-muted-foreground text-lg md:text-xl leading-relaxed font-archivo">
                 Watch the partnership in action. See how Plumb handles the heavy lifting while you stay in control.
               </p>
 
               <div className="pt-4 flex justify-center">
                 <button 
                   onClick={() => setIsManualOpen(true)}
-                  className="flex items-center gap-3 bg-black dark:bg-white text-white dark:text-black rounded-xl px-8 py-4 text-sm font-bold hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl group"
+                  className="flex items-center gap-3 bg-black dark:bg-white text-white dark:text-black rounded-xl px-10 py-5 text-[11px] font-bold uppercase tracking-widest hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl group font-bebas"
                 >
                   <BookOpen className="w-4 h-4 text-[#99ff66]" />
                   Read Full Manual
@@ -236,7 +236,7 @@ export function ManagerStoryboard() {
 
             {/* Custom Phone Frame with Auto-playing Chat */}
             <div className="relative w-full max-w-[400px] mx-auto">
-              <div className="relative w-full aspect-[9/19.5] bg-[#0F0F0F] rounded-[55px] border-[10px] border-[#1F1F1F] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5),0_0_0_1px_rgba(255,255,255,0.05)] overflow-hidden text-left">
+              <div className="relative w-full aspect-[9/19.5] bg-[#0F0F0F] rounded-[55px] border-[10px] border-[#1F1F1F] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5),0_0_0_1px_rgba(255,255,255,0.05)] overflow-hidden text-left font-archivo">
                 <div className="absolute top-4 left-1/2 -translate-x-1/2 w-28 h-7 bg-black rounded-full z-50 flex items-center justify-center">
                   <div className="w-2 h-2 rounded-full bg-[#1F1F1F] ml-auto mr-4" />
                 </div>
@@ -244,12 +244,12 @@ export function ManagerStoryboard() {
                 <div className="absolute inset-0 bg-background pt-16 pb-8 px-4 flex flex-col">
                   <div className="flex items-center justify-between mb-8 shrink-0">
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-[8px] font-black text-white">PL</div>
+                      <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-[8px] font-bold text-white uppercase font-bebas">PL</div>
                       <div>
-                        <div className="text-[10px] font-black uppercase tracking-widest text-foreground">Plumb OS</div>
+                        <div className="text-[10px] font-bold uppercase tracking-widest text-foreground font-bebas">Plumb OS</div>
                         <div className="flex items-center gap-1">
                           <div className="w-1 h-1 rounded-full bg-[#99ff66]" />
-                          <span className="text-[8px] text-muted-foreground uppercase">Active Now</span>
+                          <span className="text-[8px] text-muted-foreground uppercase font-bebas">Active Now</span>
                         </div>
                       </div>
                     </div>
@@ -261,11 +261,11 @@ export function ManagerStoryboard() {
                       {sopSteps.slice(0, autoIdx).map((step, i) => (
                         <div key={`history-${i}`} className="space-y-6 opacity-40 grayscale-[0.5]">
                           <div className="flex flex-col items-start pr-8">
-                            <div className="text-[8px] font-black text-muted-foreground uppercase tracking-widest mb-1.5 ml-1">You</div>
+                            <div className="text-[8px] font-bold text-muted-foreground uppercase tracking-widest mb-1.5 ml-1 font-bebas">You</div>
                             <div className="bg-muted/50 border border-border rounded-2xl rounded-tl-none p-4 text-[13px] leading-relaxed font-bold italic">{step.you}</div>
                           </div>
                           <div className="flex flex-col items-end pl-8">
-                            <div className="text-[8px] font-black text-muted-foreground uppercase tracking-widest mb-1.5 mr-1 text-right">Plumb</div>
+                            <div className="text-[8px] font-bold text-muted-foreground uppercase tracking-widest mb-1.5 mr-1 text-right font-bebas">Plumb</div>
                             <div className="bg-[#99ff66]/10 border border-[#99ff66]/30 rounded-2xl rounded-tr-none p-4 text-[13px] leading-relaxed text-foreground font-bold text-right w-full">{step.plumb}</div>
                           </div>
                         </div>
@@ -273,7 +273,7 @@ export function ManagerStoryboard() {
 
                       <motion.div key={`active-${autoIdx}`} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
                         <div className="flex flex-col items-start pr-8">
-                          <div className="text-[8px] font-black text-muted-foreground uppercase tracking-widest mb-1.5 ml-1">You</div>
+                          <div className="text-[8px] font-bold text-muted-foreground uppercase tracking-widest mb-1.5 ml-1 font-bebas">You</div>
                           <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="bg-muted/50 border border-border rounded-2xl rounded-tl-none p-4 text-[13px] leading-relaxed font-bold">{sopSteps[autoIdx].you}</motion.div>
                         </div>
 
@@ -289,11 +289,11 @@ export function ManagerStoryboard() {
 
                         {showPlumb && (
                           <motion.div initial={{ opacity: 0, scale: 0.95, y: 10 }} animate={{ opacity: 1, scale: 1, y: 0 }} className="flex flex-col items-end pl-8">
-                            <div className="text-[8px] font-black text-muted-foreground uppercase tracking-widest mb-1.5 mr-1 text-right">Plumb</div>
+                            <div className="text-[8px] font-bold text-muted-foreground uppercase tracking-widest mb-1.5 mr-1 text-right font-bebas">Plumb</div>
                             <div className="bg-[#99ff66]/10 border border-[#99ff66]/30 rounded-2xl rounded-tr-none p-4 text-[13px] leading-relaxed text-foreground font-bold text-right w-full shadow-lg shadow-[#99ff66]/5">
                               {sopSteps[autoIdx].plumb}
                               <div className="mt-2 flex items-center justify-end gap-1">
-                                <span className="text-[8px] font-black text-[#99ff66] uppercase tracking-tighter bg-[#99ff66]/20 px-1.5 py-0.5 rounded">{sopSteps[autoIdx].timing}</span>
+                                <span className="text-[8px] font-bold text-[#99ff66] uppercase tracking-tighter bg-[#99ff66]/20 px-1.5 py-0.5 rounded font-bebas">{sopSteps[autoIdx].timing}</span>
                               </div>
                             </div>
                           </motion.div>
@@ -303,8 +303,8 @@ export function ManagerStoryboard() {
                     <div className="h-4" />
                   </div>
 
-                  <div className="mt-auto h-12 bg-muted/20 border border-border/50 rounded-2xl flex items-center px-4 justify-between shrink-0">
-                    <span className="text-[10px] text-muted-foreground">Auto-playing demo...</span>
+                  <div className="mt-auto h-12 bg-muted/20 border border-border/50 rounded-2xl flex items-center px-4 justify-between shrink-0 font-bebas">
+                    <span className="text-[10px] text-muted-foreground tracking-widest">AUTO-PLAYING DEMO...</span>
                     <div className="flex items-center gap-1">
                        <span className="w-1 h-1 rounded-full bg-blue-600 animate-bounce [animation-delay:-0.3s]" />
                        <span className="w-1 h-1 rounded-full bg-blue-600 animate-bounce [animation-delay:-0.15s]" />
@@ -318,14 +318,14 @@ export function ManagerStoryboard() {
 
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} className="mt-32 pt-20 border-t border-border/50 text-center space-y-12">
             <div className="space-y-4">
-              <h3 className="text-3xl font-header font-bold text-foreground">Ready to see the full spec?</h3>
-              <p className="text-muted-foreground max-w-lg mx-auto">Dive deeper into our complete hiring methodology and standard operating procedures.</p>
+              <h3 className="text-4xl md:text-5xl font-bold text-foreground tracking-tight uppercase">Ready to see the full spec?</h3>
+              <p className="text-muted-foreground max-w-lg mx-auto font-archivo">Dive deeper into our complete hiring methodology and standard operating procedures.</p>
             </div>
-            <button onClick={() => setIsManualOpen(true)} className="flex items-center gap-4 bg-black dark:bg-white text-white dark:text-black rounded-2xl px-12 py-5 text-sm font-bold hover:scale-[1.05] active:scale-[0.95] transition-all shadow-2xl group mx-auto">
+            <button onClick={() => setIsManualOpen(true)} className="flex items-center gap-4 bg-black dark:bg-white text-white dark:text-black rounded-2xl px-12 py-5 text-[11px] font-bold uppercase tracking-widest hover:scale-[1.05] active:scale-[0.95] transition-all shadow-2xl group mx-auto font-bebas">
               <BookOpen className="w-5 h-5 text-[#99ff66]" />
               Read Full Hiring Manual
             </button>
-            <p className="text-muted-foreground/30 text-[10px] font-mono uppercase tracking-[0.5em] pt-12">End of Operating Procedure // Plumb Hiring Systems</p>
+            <p className="text-muted-foreground/30 text-[10px] font-bold uppercase tracking-[0.5em] pt-12 font-bebas">End of Operating Procedure // Plumb Hiring Systems</p>
           </motion.div>
         </div>
       </section>
