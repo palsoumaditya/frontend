@@ -36,7 +36,7 @@ export default function Hero() {
         transition={{ duration: 0.5, delay: 0.1 }}
         className="max-w-7xl mb-10"
       >
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-header tracking-tight leading-[1.1] md:leading-[1.1] text-[#1a1a1a] dark:text-white">
+        <h1 className="text-4xl md:text-5xl lg:text-7xl font-header tracking-tight leading-[1.1] md:leading-[1.1] text-[#1a1a1a] dark:text-white">
           <span className="relative inline-block">
             Less hiring.
             <motion.span

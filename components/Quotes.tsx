@@ -26,7 +26,7 @@ export function Quotes() {
     <section className="py-24">
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-5xl font-header font-bold text-neutral-900 dark:text-white">
+          <h2 className="text-3xl md:text-4xl font-header font-bold text-neutral-900 dark:text-white">
             Quiet wins, on record.
           </h2>
         </div>

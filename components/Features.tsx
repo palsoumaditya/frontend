@@ -202,7 +202,7 @@ export function Features() {
         <h3 className="text-sm font-subtext font-bold tracking-widest text-neutral-500 uppercase">
           Why teams keep it on
         </h3>
-        <h2 className="mt-4 text-5xl font-header font-bold text-neutral-900 dark:text-white">
+        <h2 className="mt-4 text-3xl md:text-4xl font-header font-bold text-neutral-900 dark:text-white">
           Four jobs Plumb does <br />
           <span className="text-neutral-400 italic">so you do not have to.</span>
         </h2>

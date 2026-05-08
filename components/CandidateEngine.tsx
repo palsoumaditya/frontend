@@ -62,7 +62,7 @@ export function CandidateEngine() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-5xl md:text-6xl font-header font-bold text-neutral-900 dark:text-white mb-8 leading-[1.1]">
+              <h2 className="text-3xl md:text-5xl font-header font-bold text-neutral-900 dark:text-white mb-8 leading-[1.1]">
                 The engine, <br />
                 <span className="text-[#99ff66] italic">mid-shift.</span>
               </h2>

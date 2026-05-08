@@ -49,7 +49,7 @@ export function Stats() {
           <span className="text-[10px] font-subtext font-bold tracking-[0.2em] text-neutral-400 uppercase block mb-4">
             The clock, honest.
           </span>
-          <h2 className="text-5xl font-header font-bold text-neutral-900 dark:text-white mb-6">
+          <h2 className="text-3xl md:text-4xl font-header font-bold text-neutral-900 dark:text-white mb-6">
             Real timelines from the SOP. Not vibes.
           </h2>
         </div>
@@ -82,7 +82,7 @@ export function Stats() {
               </div>
 
               <div className="md:col-span-3 flex flex-col items-start md:items-end justify-center">
-                <span className="text-5xl font-subheader font-bold text-[#99ff66] leading-none mb-2">
+                <span className="text-4xl md:text-5xl font-subheader font-bold text-[#99ff66] leading-none mb-2">
                   {item.stat}
                 </span>
                 <span className="text-xs font-subtext font-medium text-neutral-400 text-left md:text-right">
