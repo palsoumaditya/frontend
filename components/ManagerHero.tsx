@@ -1,147 +1,133 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Badge } from "@/components/ui/badge";
 import { InteractiveHoverButton } from "@/registry/magicui/interactive-hover-button";
+import { cn } from "@/lib/utils";
 
 export default function ManagerHero() {
   return (
-    <section className="relative flex flex-col items-center justify-center pt-32 pb-20 px-4 text-center overflow-hidden bg-background">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none">
-        <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle, #000 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
-      </div>
-
-      <div className="max-w-7xl mx-auto relative z-10 flex flex-col items-center">
-        {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mb-8"
+    <section className="relative pt-32 pb-20 px-4 bg-background overflow-hidden">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        {/* Left Main Card - Dark Theme */}
+        <motion.div 
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          className="lg:col-span-7 bg-[#0a0a0a] rounded-[2.5rem] p-12 md:p-16 border border-neutral-800 shadow-2xl flex flex-col justify-center min-h-[550px]"
         >
-          <Badge variant="outline" className="px-4 py-1.5 rounded-full border-gray-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 text-gray-600 dark:text-neutral-400 font-medium flex items-center gap-2 shadow-sm">
-            <span className="w-2 h-2 rounded-full bg-[#99ff66] animate-pulse" />
-            FOR HIRING MANAGERS
-          </Badge>
-        </motion.div>
-
-        {/* Main Title */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="max-w-4xl mb-6"
-        >
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-header tracking-tight leading-[1.1] md:leading-[1.1] text-[#1a1a1a] dark:text-white">
-          <span className="relative inline-block">
-            Less Hiring.
-            <motion.span
-              initial={{ width: 0 }}
-              animate={{ width: "110%" }}
-              transition={{ delay: 1.2, duration: 0.6, ease: "easeInOut" }}
-              className="absolute left-[-5%] top-[55%] h-[0.08em] bg-red-500/60 dark:bg-red-400/40 rounded-full pointer-events-none"
-            />
-          </span>
-          <br />
-          <span className="relative inline-block mt-2">
-            <motion.span 
-              initial={{ color: "currentColor" }}
-              animate={{ color: "#000000" }}
-              transition={{ delay: 1.8, duration: 0.2 }}
-              className="relative z-10 italic"
-            >
+          <h1 className="text-5xl md:text-7xl font-pt-serif font-bold text-white leading-[1.1] mb-8">
+            Less hiring. <br />
+            <span className="relative inline-block italic">
               More hires.
-            </motion.span>
-            <motion.span
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ delay: 1.8, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="absolute inset-y-[-0.05em] -inset-x-4 bg-[#99ff66] origin-left rounded-sm shadow-[0_5px_15px_rgba(153,255,102,0.4)]"
-            />
-          </span>
-        </h1>
+              <span className="absolute -bottom-2 left-0 w-full h-3 bg-[#99ff66]/80 -z-10 rounded-full" />
+            </span>
+          </h1>
+          
+          <p className="text-neutral-400 text-lg md:text-xl max-w-xl mb-12 leading-relaxed">
+            Plumb runs the hiring funnel. You make the call. We orchestrate the entire recruiting pipeline—from sourcing through shortlisting to final decision.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-6">
+            <button className="flex items-center justify-center gap-3 bg-white text-black rounded-xl px-8 py-3.5 text-base font-bold transition-transform hover:scale-105 active:scale-95 shadow-lg">
+              <span className="w-2 h-2 rounded-full bg-[#99ff66] shadow-[0_0_8px_#99ff66]" />
+              Start free
+            </button>
+            <button className="flex items-center justify-center gap-3 bg-[#1a1a1a] text-white border border-neutral-800 rounded-xl px-8 py-3.5 text-base font-bold transition-transform hover:scale-105 active:scale-95">
+              <span className="w-2 h-2 rounded-full bg-[#99ff66] shadow-[0_0_8px_#99ff66]" />
+              Request demo ↗
+            </button>
+          </div>
         </motion.div>
 
-        {/* Description */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-gray-500 dark:text-neutral-400 text-lg md:text-xl max-w-2xl mb-10 leading-relaxed"
-        >
-          You have a role to fill. You do not have weeks. Type one Slack command and the work starts. Plumb compresses the hiring cycle so you can stay in your flow.
-        </motion.p>
+        {/* Right Column */}
+        <div className="lg:col-span-5 flex flex-col gap-8">
+          
+          {/* Results & Metrics Card (Lime) */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="bg-[#99ff66] rounded-[2.5rem] p-10 flex flex-col justify-between min-h-[320px] shadow-xl"
+          >
+            <div>
+              <span className="text-[10px] font-bold tracking-[0.2em] text-black/40 uppercase mb-6 block">
+                RESULTS & METRICS
+              </span>
+              <h3 className="text-3xl md:text-4xl font-pt-serif font-bold text-black leading-tight mb-8">
+                10x faster <br /> screening
+              </h3>
+              
+              {/* Animated Progress Bars Visual */}
+              <div className="flex items-end gap-2.5 h-16 mb-8">
+                {[30, 45, 40, 55, 35, 100].map((h, i) => (
+                  <motion.div 
+                    key={i} 
+                    initial={{ height: 0 }}
+                    whileInView={{ height: `${h}%` }}
+                    transition={{ 
+                      duration: 1, 
+                      delay: 0.5 + (i * 0.1),
+                      ease: "easeOut" 
+                    }}
+                    className={cn(
+                      "w-6 rounded-md",
+                      i === 5 ? "bg-black" : "bg-black/10"
+                    )}
+                  />
+                ))}
+              </div>
+            </div>
+            
+            <div className="bg-black text-[#99ff66] text-[10px] font-bold tracking-widest uppercase px-5 py-2.5 rounded-full w-fit shadow-md">
+              48H TO INTERVIEW
+            </div>
+          </motion.div>
 
-        {/* CTA Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="flex flex-col sm:flex-row gap-4 mb-20"
-        >
-          <InteractiveHoverButton className="bg-[#99ff66] text-black border-none px-8 py-3 text-base">
-            Run /newjd in Slack
-          </InteractiveHoverButton>
-          <InteractiveHoverButton className="bg-white dark:bg-neutral-900 text-black dark:text-white border-gray-200 dark:border-neutral-800 px-8 py-3 text-base">
-            Skim the SOP
-          </InteractiveHoverButton>
-        </motion.div>
+          {/* Live Engine Section - Integrated into Right Column */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="px-4 py-6"
+          >
+            <span className="text-[10px] font-bold tracking-[0.2em] text-neutral-500 uppercase mb-6 block">
+              LIVE ENGINE
+            </span>
+            <h3 className="text-3xl md:text-4xl font-pt-serif font-bold text-white leading-tight mb-8">
+              80% less <br /> manual work
+            </h3>
+            
+            <div className="flex flex-wrap items-center gap-4">
+              <div className="flex gap-2">
+                {[
+                  { val: 91, bg: "bg-[#99ff66]" },
+                  { val: 84, bg: "bg-blue-500" },
+                  { val: 72, bg: "bg-orange-500" },
+                  { val: 65, bg: "bg-red-500" },
+                ].map((c, i) => (
+                  <motion.div 
+                    key={i}
+                    initial={{ scale: 0, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    transition={{ delay: 0.6 + (i * 0.1), type: "spring" }}
+                    className={cn("size-9 rounded-full flex items-center justify-center text-[10px] font-bold text-white shadow-xl", c.bg)}
+                  >
+                    {c.val}
+                  </motion.div>
+                ))}
+              </div>
+              <div className="bg-neutral-900 border border-neutral-800 rounded-full px-5 py-2 flex items-center backdrop-blur-sm shadow-sm">
+                <span className="text-[10px] font-bold text-[#99ff66] tracking-wider uppercase">98% ACCURACY</span>
+              </div>
+            </div>
+          </motion.div>
 
-        {/* Terminal Visual Mock */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="relative w-full max-w-4xl aspect-[16/10] md:aspect-[16/8]"
-        >
-          <Terminal>
-            <TypingAnimation delay={500}>
-              /newjd --role "Senior Product Engineer" --team "Platform" --bar "3H"
-            </TypingAnimation>
-
-            <AnimatedSpan delay={2500} className="text-[#99ff66]">
-              ✔ Initializing Plumb Sourcing Engine...
-            </AnimatedSpan>
-
-            <AnimatedSpan delay={3000} className="text-[#99ff66]">
-              ✔ Mapping company voice from 12 past hires.
-            </AnimatedSpan>
-
-            <AnimatedSpan delay={3500} className="text-[#99ff66]">
-              ✔ Benchmarking market salary: $160k - $210k.
-            </AnimatedSpan>
-
-            <AnimatedSpan delay={4000} className="text-[#99ff66]">
-              ✔ Generating JD Draft V1.0 (Hungry, Humble, High Standards).
-            </AnimatedSpan>
-
-            <AnimatedSpan delay={4500} className="text-blue-400">
-              ℹ Found 4 high-match candidates in passive pool.
-            </AnimatedSpan>
-
-            <AnimatedSpan delay={5000} className="text-[#99ff66]">
-              ✔ Syncing with Google Docs & Slack.
-            </AnimatedSpan>
-
-            <TypingAnimation delay={6000} className="text-white/60">
-              Success! JD drafted and Sourcing Loop initiated.
-            </TypingAnimation>
-
-            <TypingAnimation delay={7000} className="text-white/40 italic">
-              Check your Slack DM to review the draft.
-            </TypingAnimation>
-          </Terminal>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
 }
 
-import {
-  AnimatedSpan,
-  Terminal,
-  TypingAnimation,
-} from "@/registry/magicui/terminal";
 
 
