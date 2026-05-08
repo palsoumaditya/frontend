@@ -57,27 +57,39 @@ export function Pipeline() {
       <div className="max-w-3xl mx-auto px-6">
         {/* Header Section */}
         <div className="text-center mb-20">
-          <motion.span 
+          <motion.span
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="text-[10px] font-bold tracking-[0.2em] text-neutral-400 uppercase block mb-4"
+            className="text-[10px] font-subtext font-bold tracking-[0.2em] text-neutral-400 uppercase block mb-4"
           >
             How it works
           </motion.span>
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-5xl md:text-6xl font-pt-serif font-bold text-neutral-900 dark:text-white leading-[1.1] mb-6"
+            className="text-5xl md:text-6xl font-header font-bold text-neutral-900 dark:text-white leading-[1.1] mb-6"
           >
             Four steps. <br />
-            <span className="italic font-normal text-neutral-500 dark:text-neutral-400">One of them is yours.</span>
+            <span className="italic font-normal text-neutral-500 dark:text-neutral-400">
+              One of them is{" "}
+              <span className="relative inline-block text-neutral-900 dark:text-white">
+                yours.
+                <motion.div
+                  initial={{ width: 0 }}
+                  whileInView={{ width: "100%" }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                  className="absolute -bottom-1 left-0 h-[2px] bg-[#99ff66] shadow-[0_0_10px_rgba(153,255,102,0.5)]"
+                />
+              </span>
+            </span>
           </motion.h2>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-neutral-500 dark:text-neutral-400 text-lg"
+            className="text-neutral-500 dark:text-neutral-400 text-lg font-subtext"
           >
             Step one is on you. The rest is on us.
           </motion.p>
@@ -90,7 +102,7 @@ export function Pipeline() {
 
           <div className="space-y-16 relative">
             {steps.map((step, idx) => (
-              <motion.div 
+              <motion.div
                 key={step.id}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -100,10 +112,10 @@ export function Pipeline() {
                 className="flex gap-8 md:gap-12 relative group/step"
               >
                 {/* Step Circle */}
-                <div 
+                <div
                   className="relative z-10 shrink-0 cursor-pointer"
                 >
-                  <motion.div 
+                  <motion.div
                     animate={hoveredStep === step.id ? { x: 4, y: 4 } : { x: 0, y: 0 }}
                     className={cn(
                       "w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#99ff66] border-2 border-black dark:border-white flex items-center justify-center transition-all",
@@ -119,21 +131,21 @@ export function Pipeline() {
 
                 {/* Step Content */}
                 <div className="pt-2 md:pt-4 flex-1">
-                  <h3 className="text-2xl md:text-3xl font-pt-serif font-bold text-neutral-900 dark:text-white mb-4">
+                  <h3 className="text-2xl md:text-3xl font-header font-bold text-neutral-900 dark:text-white mb-4">
                     {step.title}
                   </h3>
-                  <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-lg mb-6">
+                  <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-lg mb-6 font-subtext">
                     {step.description}
                   </p>
-                  
+
                   <div className="flex flex-wrap gap-3">
                     {step.badges.map((badge, bIdx) => (
-                      <span 
+                      <span
                         key={bIdx}
                         className={cn(
-                          "px-4 py-1.5 rounded-full text-xs font-bold transition-all",
-                          badge.primary 
-                            ? "bg-[#99ff66] text-black border-2 border-black dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.2)]" 
+                          "px-4 py-1.5 rounded-full text-xs font-subheader font-bold transition-all",
+                          badge.primary
+                            ? "bg-[#99ff66] text-black border-2 border-black dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.2)]"
                             : "bg-transparent text-neutral-500 dark:text-neutral-400 border border-neutral-200 dark:border-neutral-800"
                         )}
                       >
@@ -153,8 +165,8 @@ export function Pipeline() {
                       className="absolute left-[650px] xl:left-[750px] top-0 z-50 pointer-events-none hidden lg:block"
                     >
                       <div className="w-72 md:w-80 aspect-video rounded-xl overflow-hidden border-2 border-black dark:border-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,0.1)] bg-white dark:bg-neutral-900">
-                        <img 
-                          src={step.image} 
+                        <img
+                          src={step.image}
                           alt={step.title}
                           className="w-full h-full object-cover"
                         />

@@ -33,7 +33,7 @@ export function OpsCTA() {
               </div>
             </motion.div>
 
-            <h2 className="text-5xl md:text-7xl lg:text-8xl font-pt-serif font-bold text-white leading-[1] mb-12 max-w-5xl">
+            <h2 className="text-5xl md:text-7xl lg:text-8xl font-header font-bold text-white leading-[1] mb-12 max-w-5xl">
               You have read the system. <br />
               <span className="italic text-[#99ff66]">Now run it.</span>
             </h2>

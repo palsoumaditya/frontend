@@ -96,10 +96,10 @@ export function ManagerStoryboard() {
                   <div className="font-mono text-xs text-[#99ff66] font-bold tracking-[0.4em] uppercase opacity-70">
                     Step // {scenes[activeIdx].num}
                   </div>
-                  <h2 className="text-4xl md:text-6xl lg:text-7xl font-pt-serif font-bold text-foreground leading-[1.1]">
+                  <h2 className="text-4xl md:text-6xl lg:text-7xl font-header font-bold text-foreground leading-[1.1]">
                     {scenes[activeIdx].title}
                   </h2>
-                  <p className="text-muted-foreground text-lg md:text-xl leading-relaxed font-geist max-w-lg">
+                  <p className="text-muted-foreground text-lg md:text-xl leading-relaxed font-subtext max-w-lg">
                     {scenes[activeIdx].copy}
                   </p>
                   {scenes[activeIdx].cta && (
@@ -258,7 +258,7 @@ export function ManagerStoryboard() {
 
                     {scenes[activeIdx].id === "hm-promise" && (
                       <div className="w-full flex flex-col items-center">
-                         <div className="text-8xl font-pt-serif font-bold text-[#99ff66] mb-4">12</div>
+                         <div className="text-8xl font-header font-bold text-[#99ff66] mb-4">12</div>
                          <div className="text-xs font-mono uppercase tracking-[0.5em] text-white/40 mb-12">Days to Offer</div>
                          <div className="w-full space-y-4">
                             {[1,2,3].map(i => (
@@ -304,11 +304,11 @@ export function ManagerStoryboard() {
               <div className="px-4 py-1 rounded-full border border-[#99ff66]/30 bg-[#99ff66]/5 text-[#99ff66] text-[10px] font-bold tracking-[0.4em] uppercase inline-block">
                 The Partnership
               </div>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-pt-serif font-bold leading-tight">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-header font-bold leading-tight">
                 The Hiring <br />
                 Manager <span className="italic text-[#99ff66]">SOP.</span>
               </h2>
-              <p className="text-white/40 text-lg leading-relaxed font-geist">
+              <p className="text-white/40 text-lg leading-relaxed font-subtext">
                 We handle the noise. You handle the decisions. A clear breakdown of our shared mission.
               </p>
               
@@ -351,7 +351,7 @@ export function ManagerStoryboard() {
                   <div className="flex-1 bg-white/[0.03] border border-white/5 rounded-2xl p-6 md:p-8 hover:bg-white/[0.05] transition-all group-hover:border-[#99ff66]/20">
                     <div className="space-y-3">
                       <div className="text-[10px] font-bold text-[#99ff66] uppercase tracking-widest opacity-50">You</div>
-                      <div className="text-lg font-pt-serif font-bold text-white/90 leading-tight">
+                      <div className="text-lg font-subheader font-bold text-white/90 leading-tight">
                         {you}
                       </div>
                     </div>
@@ -362,7 +362,7 @@ export function ManagerStoryboard() {
                     <div className="flex items-start justify-between gap-6">
                       <div className="space-y-3">
                         <div className="text-[10px] font-bold text-[#99ff66] uppercase tracking-widest">Plumb</div>
-                        <div className="text-lg font-pt-serif font-bold text-white/80 leading-tight">
+                        <div className="text-lg font-subheader font-bold text-white/80 leading-tight">
                           {plumb}
                         </div>
                       </div>

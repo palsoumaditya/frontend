@@ -119,10 +119,10 @@ export function OpsStoryboard() {
                   <div className="font-mono text-xs text-[#3b82f6] font-bold tracking-[0.4em] uppercase opacity-70">
                     Scene // {scenes[activeIdx].num}
                   </div>
-                  <h2 className="text-4xl md:text-6xl lg:text-7xl font-pt-serif font-bold text-foreground leading-[1.1]">
+                  <h2 className="text-4xl md:text-6xl lg:text-7xl font-header font-bold text-foreground leading-[1.1]">
                     {scenes[activeIdx].title}
                   </h2>
-                  <p className="text-muted-foreground text-lg md:text-xl leading-relaxed font-geist max-w-lg">
+                  <p className="text-muted-foreground text-lg md:text-xl leading-relaxed font-subtext max-w-lg">
                     {scenes[activeIdx].copy}
                   </p>
                   {scenes[activeIdx].cta && (
@@ -230,8 +230,8 @@ export function OpsStoryboard() {
                     {scenes[activeIdx].id === "ops-scores" && (
                       <div className="w-full flex flex-col items-center">
                          <div className="flex items-baseline gap-2">
-                           <NumberTicker value={87} className="text-8xl font-pt-serif font-bold text-[#99ff66]" />
-                           <span className="text-2xl font-pt-serif font-bold text-[#99ff66]/40">/100</span>
+                           <NumberTicker value={87} className="text-8xl font-subheader font-bold text-[#99ff66]" />
+                           <span className="text-2xl font-subheader font-bold text-[#99ff66]/40">/100</span>
                          </div>
                          <div className="text-xs font-mono uppercase tracking-[0.5em] text-white/40 mb-12">Fit Score Signal</div>
                          <div className="flex gap-3">
@@ -353,9 +353,9 @@ export function OpsStoryboard() {
                     {/* Scene 9: Success */}
                     {scenes[activeIdx].id === "ops-good" && (
                       <div className="w-full flex flex-col items-center">
-                         <div className="text-9xl font-pt-serif font-bold text-[#99ff66]">5</div>
-                         <div className="text-xl font-pt-serif font-bold text-white/80 -mt-4">DAYS</div>
-                         <div className="text-[10px] font-mono uppercase tracking-[0.5em] text-white/40 mt-8">Avg. Time to Shortlist</div>
+                         <div className="text-9xl font-header font-bold text-[#99ff66]">5</div>
+                         <div className="text-xl font-subheader font-bold text-white/80 -mt-4">DAYS</div>
+                         <div className="text-[10px] font-subtext font-mono uppercase tracking-[0.5em] text-white/40 mt-8">Avg. Time to Shortlist</div>
                          <div className="mt-16 w-full h-32 border border-white/10 rounded-2xl bg-[#99ff66]/5 flex items-center justify-center">
                             <span className="text-xs font-bold uppercase tracking-widest text-[#99ff66]">Playbook: COMPLETED</span>
                          </div>
@@ -389,11 +389,11 @@ export function OpsStoryboard() {
               <div className="px-4 py-1 rounded-full border border-blue-500/30 bg-blue-500/5 text-blue-500 text-[10px] font-bold tracking-[0.4em] uppercase inline-block">
                 Daily Operations
               </div>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-pt-serif font-bold leading-tight">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-header font-bold leading-tight">
                 The Operator <br />
                 <span className="italic text-[#99ff66]">Checklist.</span>
               </h2>
-              <p className="text-white/40 text-lg leading-relaxed font-geist">
+              <p className="text-white/40 text-lg leading-relaxed font-subtext">
                 Consistency is the only metric that matters. Run the playbook every morning.
               </p>
               
@@ -429,10 +429,10 @@ export function OpsStoryboard() {
                   <div className="flex items-start justify-between gap-6">
                     <div className="space-y-3">
                       <div className="text-[10px] font-bold text-blue-500 uppercase tracking-widest">{item.timing}</div>
-                      <div className="text-2xl font-pt-serif font-bold text-white/90 leading-tight">
+                      <div className="text-2xl font-subheader font-bold text-white/90 leading-tight">
                         {item.task}
                       </div>
-                      <p className="text-white/40 text-sm font-geist">{item.detail}</p>
+                      <p className="text-white/40 text-sm font-subtext">{item.detail}</p>
                     </div>
                     <div className="shrink-0 w-8 h-8 rounded-full border border-white/10 flex items-center justify-center">
                        <div className="w-2 h-2 rounded-full bg-blue-500/20 group-hover:bg-blue-500 transition-colors" />
@@ -450,7 +450,7 @@ export function OpsStoryboard() {
     <section className="py-32 bg-background border-t border-white/5">
        <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-20">
-             <h2 className="text-4xl md:text-5xl font-pt-serif font-bold mb-6">Escalation Tree</h2>
+             <h2 className="text-4xl md:text-5xl font-header font-bold mb-6">Escalation Tree</h2>
              <p className="text-muted-foreground">Know who to call when the system breaks.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">

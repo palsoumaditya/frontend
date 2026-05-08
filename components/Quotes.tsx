@@ -26,7 +26,7 @@ export function Quotes() {
     <section className="py-24">
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-5xl font-pt-serif font-bold text-neutral-900 dark:text-white">
+          <h2 className="text-5xl font-header font-bold text-neutral-900 dark:text-white">
             Quiet wins, on record.
           </h2>
         </div>
@@ -46,10 +46,10 @@ export function Quotes() {
                 transition={{ duration: 0.4, ease: "easeOut" }}
                 className="flex flex-col items-center text-center"
               >
-                <blockquote className="text-2xl md:text-3xl font-medium leading-relaxed italic text-neutral-200">
+                <blockquote className="text-2xl md:text-3xl font-subtext font-medium leading-relaxed italic text-neutral-200">
                   &quot;{testimonials[current].body}&quot;
                 </blockquote>
-                <figcaption className="mt-8 flex items-center gap-3 text-sm font-semibold tracking-widest uppercase text-neutral-500">
+                <figcaption className="mt-8 flex items-center gap-3 text-sm font-subheader font-semibold tracking-widest uppercase text-neutral-500">
                   <span className="h-px w-6 bg-[#99ff66]" />
                   {testimonials[current].author}
                 </figcaption>

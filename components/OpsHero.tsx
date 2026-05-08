@@ -38,10 +38,25 @@ export default function OpsHero() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="max-w-4xl mb-6"
         >
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-pt-serif tracking-tight leading-[1.1] text-[#1a1a1a] dark:text-white">
-            Run the system. <br />
-            <span className="italic">Make the call.</span>
-          </h1>
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-header tracking-tight leading-[1.1] md:leading-[1.1] text-[#1a1a1a] dark:text-white">
+          Run the system. <br />
+          <span className="relative inline-block mt-2">
+            <motion.span 
+              initial={{ color: "currentColor" }}
+              animate={{ color: "#000000" }}
+              transition={{ delay: 1.2, duration: 0.2 }}
+              className="relative z-10 italic"
+            >
+              Make the call.
+            </motion.span>
+            <motion.span
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ delay: 1.2, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              className="absolute inset-y-[-0.05em] -inset-x-4 bg-[#99ff66] origin-left rounded-sm shadow-[0_5px_15px_rgba(153,255,102,0.4)]"
+            />
+          </span>
+        </h1>
         </motion.div>
 
         {/* Description */}
