@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
-import { PT_Serif, Geist, Geist_Mono } from "next/font/google";
+import { Instrument_Serif, Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { AppNavbar } from "@/components/Navbar";
 import { ThemeProvider } from "@/components/theme-provider";
+import { AppWrapper } from "@/components/AppWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,10 +16,20 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const ptSerif = PT_Serif({
-  variable: "--font-pt-serif",
+const instrumentSerif = Instrument_Serif({
+  variable: "--font-instrument-serif",
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: "400",
+});
+
+const neueHaas = localFont({
+  src: "../public/fonts/NeueHaasGrotDisp-55Roman-Trial.otf",
+  variable: "--font-neue-haas",
+});
+
+const epilogue = localFont({
+  src: "../public/fonts/Epilogue-Medium.ttf",
+  variable: "--font-epilogue",
 });
 
 export const metadata: Metadata = {
@@ -31,8 +43,6 @@ export const metadata: Metadata = {
   },
 };
 
-
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -41,7 +51,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${ptSerif.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} ${neueHaas.variable} ${epilogue.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col">
@@ -51,10 +61,12 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <AppNavbar />
-          {children}
+          <AppWrapper>
+            {children}
+          </AppWrapper>
         </ThemeProvider>
       </body>
     </html>
   );
 }
+

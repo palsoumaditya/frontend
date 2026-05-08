@@ -63,13 +63,13 @@ const BentoCard = ({
     {/* Text content always visible at the bottom */}
     <div className="relative z-10 flex flex-col gap-1 p-6">
       <Icon className="h-8 w-8 mb-1 text-neutral-700 dark:text-neutral-300" />
-      <h3 className="text-xl font-bold text-neutral-900 dark:text-neutral-100">
+      <h3 className="text-xl font-subheader font-bold text-neutral-900 dark:text-neutral-100">
         {name}
       </h3>
-      <p className="text-sm text-neutral-500 dark:text-neutral-400">{description}</p>
+      <p className="text-sm font-subtext text-neutral-500 dark:text-neutral-400">{description}</p>
       <a
         href={href}
-        className="mt-2 inline-flex items-center text-sm font-semibold text-neutral-900 hover:underline dark:text-neutral-100"
+        className="mt-2 inline-flex items-center text-sm font-subheader font-semibold text-neutral-900 hover:underline dark:text-neutral-100"
       >
         {cta}
         <ArrowRightIcon className="ms-1 h-3.5 w-3.5" />

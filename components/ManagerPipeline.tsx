@@ -43,10 +43,10 @@ export function ManagerPipeline() {
           <p className="text-[10px] font-bold tracking-[0.3em] text-muted-foreground uppercase mb-6">
             HOW IT WORKS
           </p>
-          <h2 className="text-6xl md:text-7xl font-pt-serif font-bold text-foreground mb-4">
-            The Pipeline.
+          <h2 className="text-6xl md:text-7xl font-header font-bold text-foreground mb-4">
+            Less time.
           </h2>
-          <p className="text-4xl md:text-5xl font-pt-serif italic text-muted-foreground leading-tight mb-8">
+          <p className="text-4xl md:text-5xl font-subheader italic text-muted-foreground leading-tight mb-8">
             Live AI-powered candidate scoring.
           </p>
           <p className="max-w-2xl text-lg text-muted-foreground leading-relaxed">
@@ -76,7 +76,7 @@ export function ManagerPipeline() {
 
                 {/* Content */}
                 <div className="flex-1 space-y-4">
-                  <h3 className="text-3xl font-pt-serif font-bold text-foreground">
+                  <h3 className="text-3xl font-header font-bold text-foreground">
                     {step.title}
                   </h3>
                   <div className="space-y-4">

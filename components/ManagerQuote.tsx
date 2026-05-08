@@ -25,7 +25,7 @@ export function ManagerQuote() {
           </div>
 
           <div className="space-y-12">
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-pt-serif italic leading-[1.1] text-white">
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-subheader italic leading-[1.1] text-white">
               "You keep the parts that matter: meeting great people, making the call. <span className="text-[#99ff66]">Plumb handles the noise.</span>"
             </h2>
             

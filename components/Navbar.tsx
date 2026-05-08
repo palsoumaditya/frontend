@@ -10,8 +10,10 @@ import {
   MobileNavHeader,
   MobileNavToggle,
   MobileNavMenu,
+  useNavbar,
 } from "@/components/ui/resizable-navbar";
 import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
+import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
@@ -45,7 +47,7 @@ export function AppNavbar() {
         <NavbarLogo />
         <NavItems items={navItems} />
         <div className="flex items-center gap-4">
-          <AnimatedThemeToggler variant="circle" fromCenter />
+          <TogglerWrapper />
         </div>
       </NavBody>
 
@@ -54,13 +56,14 @@ export function AppNavbar() {
         <MobileNavHeader>
           <NavbarLogo />
           <div className="flex items-center gap-2">
-            <AnimatedThemeToggler variant="circle" fromCenter />
+            <TogglerWrapper />
             <MobileNavToggle
               isOpen={isMobileMenuOpen}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             />
           </div>
         </MobileNavHeader>
+
 
         <MobileNavMenu
           isOpen={isMobileMenuOpen}
@@ -71,7 +74,7 @@ export function AppNavbar() {
               key={`mobile-link-${idx}`}
               href={item.link}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="relative text-neutral-600 font-medium py-2"
+              className="relative text-neutral-600 font-subheader font-medium py-2"
             >
               <span className="block">{item.name}</span>
             </a>
@@ -81,5 +84,13 @@ export function AppNavbar() {
         </MobileNavMenu>
       </MobileNav>
     </Navbar>
+  );
+}
+
+function TogglerWrapper() {
+  return (
+    <div className="transition-colors text-inherit">
+      <AnimatedThemeToggler variant="circle" fromCenter />
+    </div>
   );
 }

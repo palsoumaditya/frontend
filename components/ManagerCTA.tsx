@@ -33,7 +33,7 @@ export function ManagerCTA() {
               </div>
             </motion.div>
 
-            <h2 className="text-5xl md:text-7xl lg:text-8xl font-pt-serif font-bold text-white leading-[1] mb-12 max-w-5xl">
+            <h2 className="text-5xl md:text-7xl lg:text-8xl font-header font-bold text-white leading-[1] mb-12 max-w-5xl">
               You have a role to fill. <br />
               <span className="italic text-[#99ff66]">The work starts here.</span>
             </h2>

@@ -44,10 +44,10 @@ export function ManagerFeatures() {
           <p className="text-[10px] font-bold tracking-[0.3em] text-muted-foreground uppercase mb-6">
             FEATURES DEEP-DIVE
           </p>
-          <h2 className="text-5xl md:text-6xl font-pt-serif font-bold text-foreground mb-4">
-            How it actually works,
+          <h2 className="text-5xl md:text-6xl font-header font-bold text-foreground mb-4">
+            Powerful for Ops.
           </h2>
-          <p className="text-4xl md:text-5xl font-pt-serif italic text-muted-foreground mb-8">
+          <p className="text-4xl md:text-5xl font-subheader italic text-muted-foreground mb-8">
             so you can stop wondering.
           </p>
           <p className="max-w-2xl text-lg text-muted-foreground leading-relaxed">

@@ -50,12 +50,12 @@ const ScoringItem = ({ name, description, icon, color, time }: typeof scoringNot
         <span className="text-sm">{icon}</span>
       </div>
       <div className="flex flex-col overflow-hidden">
-        <figcaption className="flex flex-row items-center whitespace-pre text-sm font-medium dark:text-white">
+        <figcaption className="flex flex-row items-center whitespace-pre text-sm font-subheader font-medium dark:text-white">
           <span className="text-sm">{name}</span>
           <span className="mx-1">·</span>
-          <span className="text-xs text-gray-500">{time}</span>
+          <span className="text-xs font-subtext text-gray-500">{time}</span>
         </figcaption>
-        <p className="text-xs font-normal text-neutral-500 dark:text-white/60">{description}</p>
+        <p className="text-xs font-subtext font-normal text-neutral-500 dark:text-white/60">{description}</p>
       </div>
     </div>
   </figure>
@@ -199,10 +199,10 @@ export function Features() {
   return (
     <section className="max-w-6xl mx-auto px-4 py-24">
       <div className="mb-12">
-        <h3 className="text-sm font-bold tracking-widest text-neutral-500 uppercase">
+        <h3 className="text-sm font-subtext font-bold tracking-widest text-neutral-500 uppercase">
           Why teams keep it on
         </h3>
-        <h2 className="mt-4 text-5xl font-pt-serif font-bold text-neutral-900 dark:text-white">
+        <h2 className="mt-4 text-5xl font-header font-bold text-neutral-900 dark:text-white">
           Four jobs Plumb does <br />
           <span className="text-neutral-400 italic">so you do not have to.</span>
         </h2>

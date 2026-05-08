@@ -53,7 +53,7 @@ export function CandidateEngine() {
     <section className="py-24 bg-background relative overflow-hidden">
       {/* Decorative background element */}
       <div className="absolute -right-24 top-1/4 w-96 h-96 bg-[#99ff66]/5 blur-[120px] rounded-full pointer-events-none" />
-      
+
       <div className="max-w-6xl mx-auto px-4 relative">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <div>
@@ -62,11 +62,11 @@ export function CandidateEngine() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-5xl md:text-6xl font-pt-serif font-bold text-neutral-900 dark:text-white mb-8 leading-[1.1]">
+              <h2 className="text-5xl md:text-6xl font-header font-bold text-neutral-900 dark:text-white mb-8 leading-[1.1]">
                 The engine, <br />
                 <span className="text-[#99ff66] italic">mid-shift.</span>
               </h2>
-              <p className="text-lg text-neutral-500 dark:text-neutral-400 leading-relaxed mb-12 max-w-lg">
+              <p className="text-lg font-subtext text-neutral-500 dark:text-neutral-400 leading-relaxed mb-12 max-w-lg">
                 Resumes come in. Plumb does the rest and delivers quality!
               </p>
 
@@ -76,18 +76,18 @@ export function CandidateEngine() {
                   { label: "Filtered", value: filtered, icon: Filter, color: "text-amber-500" },
                   { label: "Top Score", value: `${topScore}%`, icon: Trophy, color: "text-[#99ff66]" },
                 ].map((stat, idx) => (
-                  <motion.div 
-                    key={idx} 
+                  <motion.div
+                    key={idx}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: idx * 0.1 }}
                     className="flex flex-col gap-2"
                   >
-                    <div className="flex items-center gap-2 text-[10px] font-bold text-neutral-400 uppercase tracking-widest">
+                    <div className="flex items-center gap-2 text-[10px] font-subtext font-bold text-neutral-400 uppercase tracking-widest">
                       <stat.icon className={cn("h-3 w-3", stat.color)} />
                       {stat.label}
                     </div>
-                    <div className="text-3xl font-pt-serif font-bold text-neutral-900 dark:text-white">
+                    <div className="text-3xl font-subheader font-bold text-neutral-900 dark:text-white">
                       {stat.value}
                     </div>
                   </motion.div>
@@ -106,7 +106,7 @@ export function CandidateEngine() {
                 </span>
                 Inbound Stream
               </div>
-              
+
               <div className="h-[400px] overflow-hidden relative group">
                 <AnimatedList delay={2000} className="gap-3">
                   {candidates.map((c) => (
@@ -119,12 +119,12 @@ export function CandidateEngine() {
                           {c.name.charAt(0)}
                         </div>
                         <div className="overflow-hidden">
-                          <div className="text-sm font-bold text-neutral-900 dark:text-white truncate">{c.name}</div>
-                          <div className="text-[10px] text-neutral-500 font-medium truncate">{c.role}</div>
+                          <div className="text-sm font-subheader font-bold text-neutral-900 dark:text-white truncate">{c.name}</div>
+                          <div className="text-[10px] font-subtext text-neutral-500 font-medium truncate">{c.role}</div>
                         </div>
                       </div>
                       <div className={cn(
-                        "text-sm font-bold",
+                        "text-sm font-subheader font-bold",
                         c.score >= 85 ? "text-green-500" : c.score >= 70 ? "text-yellow-500" : "text-red-500"
                       )}>
                         {c.score}
@@ -143,7 +143,7 @@ export function CandidateEngine() {
                 <Star className="h-3 w-3 fill-[#99ff66]" />
                 Shortlist
               </div>
-              
+
               <div className="flex flex-col gap-4">
                 <AnimatePresence initial={false}>
                   {shortlist.map((c, idx) => (
@@ -159,19 +159,19 @@ export function CandidateEngine() {
                           {c.name.charAt(0)}
                         </div>
                         <div>
-                          <div className="text-sm font-bold text-neutral-900 dark:text-white group-hover:text-[#99ff66] transition-colors">
+                          <div className="text-sm font-subheader font-bold text-neutral-900 dark:text-white group-hover:text-[#99ff66] transition-colors">
                             {c.name}
                           </div>
-                          <div className="text-[10px] text-[#99ff66]/80 font-bold uppercase tracking-wider">Shortlisted</div>
+                          <div className="text-[10px] font-subtext text-[#99ff66]/80 font-bold uppercase tracking-wider">Shortlisted</div>
                         </div>
                       </div>
-                      <div className="text-base font-bold text-neutral-900 dark:text-white">{c.score}%</div>
+                      <div className="text-base font-subheader font-bold text-neutral-900 dark:text-white">{c.score}%</div>
                     </motion.div>
                   ))}
                 </AnimatePresence>
-                
+
                 {shortlist.length === 0 && (
-                  <motion.div 
+                  <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     className="h-[320px] border-2 border-dashed border-neutral-200 dark:border-neutral-800 rounded-2xl flex flex-col items-center justify-center text-center p-6"
@@ -179,8 +179,8 @@ export function CandidateEngine() {
                     <div className="w-12 h-12 rounded-full bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center mb-4">
                       <Trophy className="h-6 w-6 text-neutral-400" />
                     </div>
-                    <div className="text-sm font-bold text-neutral-500 mb-1">Waiting on the next batch.</div>
-                    <div className="text-[10px] text-neutral-400 uppercase tracking-widest">Plumb is awake.</div>
+                    <div className="text-sm font-subheader font-bold text-neutral-500 mb-1">Waiting on the next batch.</div>
+                    <div className="text-[10px] font-subtext text-neutral-400 uppercase tracking-widest">Plumb is awake.</div>
                   </motion.div>
                 )}
               </div>
@@ -188,7 +188,7 @@ export function CandidateEngine() {
           </div>
         </div>
         <div className="mt-20 text-center">
-          <p className="text-[10px] text-neutral-400 uppercase tracking-[0.2em]">
+          <p className="text-[10px] font-subtext text-neutral-400 uppercase tracking-[0.2em]">
             Sample stream. Real candidates never appear on the public page.
           </p>
         </div>
