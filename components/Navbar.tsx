@@ -13,20 +13,14 @@ import {
 } from "@/components/ui/resizable-navbar";
 import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export function AppNavbar() {
+  const router = useRouter();
   const navItems = [
     {
-      name: "Features",
-      link: "#features",
-    },
-    {
-      name: "Playbook",
-      link: "#playbook",
-    },
-    {
-      name: "Pricing",
-      link: "#pricing",
+      name: "for manager",
+      link: "/manager",
     },
   ];
 
