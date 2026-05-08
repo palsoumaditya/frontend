@@ -19,8 +19,16 @@ export function AppNavbar() {
   const router = useRouter();
   const navItems = [
     {
+      name: "home",
+      link: "/",
+    },
+    {
       name: "for manager",
       link: "/manager",
+    },
+    {
+      name: "for ops",
+      link: "/ops",
     },
   ];
 
