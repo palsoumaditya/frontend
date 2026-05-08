@@ -9,42 +9,42 @@ import { AnimatePresence } from "framer-motion";
 const steps = [
   {
     id: "01",
-    title: "Sourcing",
-    description: "Cards slide left-to-right as resumes enter the pipeline, representing initial inbound candidates.",
+    title: "Brief (yours)",
+    description: "One command on Slack. JD draft back the same day. Revise in chat until it reads right.",
     image: "/sourcing.png",
     badges: [
-      { text: "Resume parsing", primary: true },
-      { text: "Role matching", primary: false }
+      { text: "Slack /newjd", primary: true },
+      { text: "JD draft", primary: false }
     ]
   },
   {
     id: "02",
-    title: "Shortlisting",
-    description: "Cards are re-scored. Only candidates scoring ≥85 are moved to the top tier for human review.",
+    title: "Find",
+    description: "Plumb opens the funnel. Candidates funnel in!",
     image: "/shortlisting.png",
     badges: [
-      { text: "Score: 85-98", primary: true },
-      { text: "Score <70 filtered", primary: false }
+      { text: "Inbound", primary: true },
+      { text: "Outbound", primary: false }
     ]
   },
   {
     id: "03",
-    title: "Briefing",
-    description: "The top 5 candidates are structured into readable briefs, saving hours of manual data entry.",
+    title: "Sort",
+    description: "Prospects land on your devices to pick and choose. Click Proceed, Hold, or Reject.",
     image: "/briefing.png",
     badges: [
-      { text: "Top 5", primary: true },
-      { text: "Auto-formatted", primary: false }
+      { text: "Shortlist", primary: true },
+      { text: "Proceed / Hold / Reject", primary: false }
     ]
   },
   {
     id: "04",
-    title: "Ready",
-    description: "Automated outreach completes the cycle. You step in only when candidates are ready to interview.",
+    title: "Hire (yours)",
+    description: "Pick the slot. Run the interview. Drop feedback. Make the call.",
     image: "/ready.png",
     badges: [
-      { text: "Automated outreach", primary: true },
-      { text: "Analytics tracked", primary: false }
+      { text: "Interview", primary: true },
+      { text: "Decision", primary: false }
     ]
   }
 ];
@@ -62,7 +62,7 @@ export function Pipeline() {
             whileInView={{ opacity: 1, y: 0 }}
             className="text-[10px] font-bold tracking-[0.2em] text-neutral-400 uppercase block mb-4"
           >
-            The Pipeline Visualized
+            How it works
           </motion.span>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
@@ -70,8 +70,8 @@ export function Pipeline() {
             transition={{ delay: 0.1 }}
             className="text-5xl md:text-6xl font-pt-serif font-bold text-neutral-900 dark:text-white leading-[1.1] mb-6"
           >
-            What a flow looks like <br />
-            <span className="italic font-normal text-neutral-500 dark:text-neutral-400">from the inside.</span>
+            Four steps. <br />
+            <span className="italic font-normal text-neutral-500 dark:text-neutral-400">One of them is yours.</span>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -79,7 +79,7 @@ export function Pipeline() {
             transition={{ delay: 0.2 }}
             className="text-neutral-500 dark:text-neutral-400 text-lg"
           >
-            From Sourcing to Ready. Cards flow and score automatically.
+            Step one is on you. The rest is on us.
           </motion.p>
         </div>
 

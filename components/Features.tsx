@@ -11,8 +11,8 @@ import { forwardRef, useRef } from "react";
 
 const files = [
   {
-    name: "jane_doe_resume.pdf",
-    body: "Senior Frontend Engineer with 8 years of React experience. Led teams at Fortune 500 companies.",
+    name: "senior_be_eng_brief.md",
+    body: "Senior Backend Engineer. Expert in Node.js and distributed systems.",
   },
   {
     name: "backend_architect.docx",
@@ -30,10 +30,10 @@ const files = [
 
 // --- Animated List (Live AI Scoring) ---
 const scoringNotifications = [
-  { name: "Michael Ross filtered out", description: "Score: 65", time: "2m ago", icon: "🔴", color: "#ff4d4d" },
-  { name: "Alex Chen passed initial screening", description: "Score: 82", time: "5m ago", icon: "✅", color: "#00C9A7" },
-  { name: "Sarah Jenkins matched", description: "Score: 94", time: "10m ago", icon: "⭐", color: "#FFB800" },
-  { name: "David Park passed", description: "Score: 78", time: "14m ago", icon: "✅", color: "#00C9A7" },
+  { name: "Inbound batch scored", description: "Score: 92", time: "2m ago", icon: "✅", color: "#99ff66" },
+  { name: "Outbound lead added", description: "Lead found", time: "5m ago", icon: "✅", color: "#00C9A7" },
+  { name: "Inbound batch scored", description: "Score: 88", time: "10m ago", icon: "✅", color: "#99ff66" },
+  { name: "Outbound lead added", description: "Lead found", time: "14m ago", icon: "✅", color: "#00C9A7" },
 ];
 
 const expandedNotifications = Array.from({ length: 6 }, () => scoringNotifications).flat();
@@ -113,8 +113,8 @@ const OutreachBeamViz = () => {
 const AnalyticsBars = () => (
   <div className="absolute top-6 right-6 left-6 flex flex-col gap-2 [mask-image:linear-gradient(to_bottom,#000_60%,transparent_100%)]">
     <div className="flex items-center justify-between text-xs text-neutral-400 mb-1">
-      <span>Candidates Scanned</span>
-      <span className="font-semibold text-neutral-700 dark:text-neutral-200">3,492</span>
+      <span>Decisions logged</span>
+      <span className="font-semibold text-neutral-700 dark:text-neutral-200">1,240</span>
     </div>
     {[80, 55, 90, 40, 70, 60].map((w, i) => (
       <div key={i} className="flex items-center gap-2">
@@ -127,10 +127,10 @@ const AnalyticsBars = () => (
 const features = [
   {
     Icon: FileTextIcon,
-    name: "Parse & Match",
-    description: "Automatically extract data and match candidates to your exact role requirements in real time.",
-    href: "#",
-    cta: "Learn more",
+    name: "Hours, back.",
+    description: "Brief once in Slack. Skip the rewrite, the recruiter call, the resume pile. Get the week back.",
+    href: "#how-it-works",
+    cta: "How it works",
     className: "col-span-3 lg:col-span-1",
     hoverBorderColor: "hover:border-[#99ff66]/60",
     background: (
@@ -157,10 +157,10 @@ const features = [
   },
   {
     Icon: ActivityIcon,
-    name: "Live AI Scoring",
-    description: "Candidates are instantly evaluated as they enter the pipeline, bubbling top performers to the surface.",
-    href: "#",
-    cta: "Learn more",
+    name: "Hidden talent, found.",
+    description: "Plumb pulls from the channels that work for the role. Inbound and outbound, scored on one scale.",
+    href: "#how-it-works",
+    cta: "How it works",
     className: "col-span-3 lg:col-span-2",
     hoverBorderColor: "hover:border-[#99ff66]/60",
     background: (
@@ -175,21 +175,21 @@ const features = [
   },
   {
     Icon: MailIcon,
-    name: "Automated Outreach",
-    description: "Seamlessly handle candidate communication. Move from an open role to a signed offer without the administrative middle.",
-    href: "#",
-    cta: "Learn more",
+    name: "Curated, not collected.",
+    description: "Twenty to thirty names per batch, ranked. Proceed, Hold, Reject.",
+    href: "#how-it-works",
+    cta: "How it works",
     className: "col-span-3 lg:col-span-2",
     hoverBorderColor: "hover:border-[#99ff66]/60",
     background: <OutreachBeamViz />,
   },
   {
     Icon: BarChart3Icon,
-    name: "Analytics & Insights",
-    description: "View real-time funnel metrics, track candidate status, and measure your time-to-hire.",
+    name: "Smarter every call.",
+    description: "Every Yes and every No sharpens the next batch. The bar moves up.",
     className: "col-span-3 lg:col-span-1",
-    href: "#",
-    cta: "Learn more",
+    href: "#how-it-works",
+    cta: "How it works",
     hoverBorderColor: "hover:border-[#99ff66]/60",
     background: <AnalyticsBars />,
   },
@@ -200,11 +200,11 @@ export function Features() {
     <section className="max-w-6xl mx-auto px-4 py-24">
       <div className="mb-12">
         <h3 className="text-sm font-bold tracking-widest text-neutral-500 uppercase">
-          Features Deep-Dive
+          Why teams keep it on
         </h3>
         <h2 className="mt-4 text-5xl font-pt-serif font-bold text-neutral-900 dark:text-white">
-          How It Works:
-          <span className="block text-neutral-400">The Core Engine</span>
+          Four jobs Plumb does <br />
+          <span className="text-neutral-400 italic">so you do not have to.</span>
         </h2>
       </div>
       <BentoGrid>

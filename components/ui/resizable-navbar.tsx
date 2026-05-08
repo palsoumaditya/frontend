@@ -73,9 +73,9 @@ export const NavbarLogo = () => {
   return (
     <div className="flex items-center gap-2 font-bold text-xl font-garamond dark:text-white">
       <div className="size-8 rounded-lg bg-black dark:bg-white flex items-center justify-center text-white dark:text-black text-lg">
-        L
+        P
       </div>
-      <span>Loop</span>
+      <span>Plumb</span>
     </div>
   );
 };

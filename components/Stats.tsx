@@ -5,40 +5,39 @@ import { cn } from "@/lib/utils";
 
 const statsData = [
   {
-    category: "VOLUME ROLES",
-    title: "Scaling the engineering team",
-    description: "The bottleneck is rarely sourcing—it's the wait between stages. Emergence screens, ranks, and shortlists in parallel. The slowest part becomes the candidate's own response time.",
-    stat: "10x",
-    statLabel: "faster screening pipeline",
+    category: "JOB LIVE",
+    title: "From JD approval to job live",
+    description: "One slash command. Draft the same day. Approval flips the role live.",
+    stat: "24h",
+    statLabel: "JD approval to live role.",
   },
   {
-    category: "EFFICIENCY",
-    title: "Eliminating the administrative middle",
-    description: "Top performers bubble to the surface instantly. We remove the manual sorting and initial outreach so you only look at highly qualified, engaged profiles.",
-    stat: "80%",
-    statLabel: "reduction in manual work",
-    highlight: true,
+    category: "FIRST BATCH",
+    title: "From job live to first screening batch",
+    description: "Inbound scored on arrival. First ranked batch lands in Slack inside two days.",
+    stat: "24-48h",
+    statLabel: "to first ranked batch.",
   },
   {
-    category: "QUALITY CONTROL",
-    title: "Calibrated matching",
-    description: "Emergence pulls from the channels your team already trusts and ensures matching is perfectly aligned to your specific technical requirements.",
-    stat: "98%",
-    statLabel: "matching accuracy",
+    category: "BATCH SIZE",
+    title: "Curated, not collected",
+    description: "Twenty to thirty names per batch, ranked. Proceed, Hold, Reject. No swamp to scroll.",
+    stat: "20-30",
+    statLabel: "candidates per HM batch.",
   },
   {
-    category: "TIME TO HIRE",
-    title: "Active interviews before the week ends",
-    description: "New candidates flow in and are scored within milliseconds. We've compressed the timeline so you go from an open requisition to a calendar invite almost immediately.",
-    stat: "< 48 hrs",
-    statLabel: "avg. time to first interview",
+    category: "INTERVIEW-READY",
+    title: "Median to interview-ready",
+    description: "Brief Monday. First interview slot Friday. Tracking and improving. Not a brag.",
+    stat: "5 days",
+    statLabel: "median to interview-ready (Target).",
   },
   {
-    category: "VISIBILITY",
-    title: "Live Engine Tracking",
-    description: "Watch candidates flow through the funnel with live counters updating continuously. No more guessing where your talent pool stands.",
+    category: "ALWAYS ON",
+    title: "Running always",
+    description: "The engine does not sleep. Inbound scored as it lands. Ops sees every move in the Hub.",
     stat: "Live",
-    statLabel: "real-time funnel visibility",
+    statLabel: "funnel visibility, end to end.",
   },
 ];
 
@@ -47,12 +46,12 @@ export function Stats() {
     <section className="py-24">
       <div className="max-w-6xl mx-auto px-4">
         <div className="mb-16 max-w-2xl">
+          <span className="text-[10px] font-bold tracking-[0.2em] text-neutral-400 uppercase block mb-4">
+            The clock, honest.
+          </span>
           <h2 className="text-5xl font-pt-serif font-bold text-neutral-900 dark:text-white mb-6">
-            Where it earns its keep.
+            Real timelines from the SOP. Not vibes.
           </h2>
-          <p className="text-lg text-neutral-500 dark:text-neutral-400 leading-relaxed">
-            The difference between a slow hire and a fast one is the difference between hitting a quarter and missing it. Here is how Plumb changes the math.
-          </p>
         </div>
 
         <div className="rounded-[2.5rem] border border-neutral-200 bg-white overflow-hidden dark:bg-neutral-900 dark:border-neutral-800 shadow-sm">
@@ -92,6 +91,11 @@ export function Stats() {
               </div>
             </div>
           ))}
+        </div>
+        <div className="mt-8 text-left">
+          <p className="text-[10px] text-neutral-400 uppercase tracking-widest italic">
+            Target means we are tracking it and improving it. Not a brag.
+          </p>
         </div>
       </div>
     </section>

@@ -21,8 +21,14 @@ const ptSerif = PT_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "Plumb — Less hiring. More hires.",
-  description: "Plumb runs the hiring funnel. You make the call. AI-native hiring automation for elite teams.",
+  title: "Plumb. Less hiring. More hires.",
+  description: "Plumb runs the hiring funnel inside Slack. Brief once, get a ranked shortlist back, make the call.",
+  openGraph: {
+    images: ["/og.png"],
+  },
+  twitter: {
+    images: ["/og.png"],
+  },
 };
 
 

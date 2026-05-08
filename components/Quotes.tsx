@@ -7,20 +7,12 @@ import { ArrowLeftIcon, ArrowRightIcon } from "@radix-ui/react-icons";
 
 const testimonials = [
   {
-    body: "The fastest hires we've made were also the most considered. Plumb's live candidate scoring helped us spend less time on manual screening and more time making great hires.",
-    author: "Recruiting Lead",
+    body: "A brief on Monday turned into a ranked shortlist by Wednesday. The team got its week back.",
+    author: "Hiring Manager, Engineering. Emergence Software.",
   },
   {
-    body: "Automating our outreach with Emergence has doubled our response rate. We're now reaching top-tier talent that used to ignore our manual emails.",
-    author: "Head of Talent",
-  },
-  {
-    body: "The analytics and insights have finally given us a clear view of our hiring funnel. We identified a bottleneck in our technical interview stage that we never noticed before.",
-    author: "VP of Engineering",
-  },
-  {
-    body: "The AI parsing is incredibly accurate. It picks up nuances in resumes that other tools missed, helping us match candidates to roles perfectly.",
-    author: "Senior Recruiter",
+    body: "We stopped scrolling resumes. We started reading the top twenty.",
+    author: "Hiring Manager, Operations. Emergence Software.",
   },
 ];
 
@@ -33,6 +25,11 @@ export function Quotes() {
   return (
     <section className="py-24">
       <div className="max-w-6xl mx-auto px-4">
+        <div className="text-center mb-12">
+          <h2 className="text-5xl font-pt-serif font-bold text-neutral-900 dark:text-white">
+            Quiet wins, on record.
+          </h2>
+        </div>
         <div className="relative group">
           <div
             className={cn(

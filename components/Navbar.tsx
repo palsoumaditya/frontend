@@ -19,16 +19,20 @@ export function AppNavbar() {
   const router = useRouter();
   const navItems = [
     {
-      name: "home",
-      link: "/",
+      name: "How it works",
+      link: "#how-it-works",
     },
     {
-      name: "for manager",
+      name: "For HMs",
       link: "/manager",
     },
     {
-      name: "for ops",
+      name: "For Ops",
       link: "/ops",
+    },
+    {
+      name: "Contact",
+      link: "#contact",
     },
   ];
 
@@ -42,8 +46,6 @@ export function AppNavbar() {
         <NavItems items={navItems} />
         <div className="flex items-center gap-4">
           <AnimatedThemeToggler variant="circle" fromCenter />
-          <NavbarButton variant="secondary">Login</NavbarButton>
-          <NavbarButton variant="primary">Book a call</NavbarButton>
         </div>
       </NavBody>
 
@@ -75,20 +77,6 @@ export function AppNavbar() {
             </a>
           ))}
           <div className="flex w-full flex-col gap-4 mt-4">
-            <NavbarButton
-              onClick={() => setIsMobileMenuOpen(false)}
-              variant="secondary"
-              className="w-full"
-            >
-              Login
-            </NavbarButton>
-            <NavbarButton
-              onClick={() => setIsMobileMenuOpen(false)}
-              variant="primary"
-              className="w-full"
-            >
-              Book a call
-            </NavbarButton>
           </div>
         </MobileNavMenu>
       </MobileNav>

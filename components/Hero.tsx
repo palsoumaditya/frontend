@@ -17,7 +17,7 @@ export default function Hero() {
       >
         <Badge variant="outline" className="px-4 py-1.5 rounded-full border-gray-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 text-gray-600 dark:text-neutral-400 font-medium flex items-center gap-2 shadow-sm">
           <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-          PLUMB — HIRING FUNNEL AUTOMATION
+          PLUMB. THE HIRING ENGINE INSIDE EMERGENCE.
         </Badge>
       </motion.div>
 
@@ -29,7 +29,7 @@ export default function Hero() {
         className="max-w-7xl mb-6"
       >
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-pt-serif tracking-tight leading-[1.1] md:leading-[0.9] text-[#1a1a1a] dark:text-white">
-          <span className="block whitespace-nowrap">Plumb — Less hiring.</span>
+          <span className="block whitespace-nowrap">Less hiring.</span>
           <span className="block italic whitespace-nowrap">More hires.</span>
         </h1>
       </motion.div>
@@ -39,10 +39,10 @@ export default function Hero() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="text-gray-500 dark:text-neutral-400 text-lg md:text-xl max-w-xl mb-10 leading-relaxed"
+        className="text-gray-500 dark:text-neutral-400 text-lg md:text-xl max-w-2xl mb-10 leading-relaxed"
       >
-        Plumb runs the hiring funnel. <br />
-        You make the call.
+        Brief once. Get a ranked shortlist back. Make the call. <br />
+        Plumb is the engine that runs your funnel inside Slack.
       </motion.p>
 
       {/* CTA Buttons */}
@@ -50,32 +50,25 @@ export default function Hero() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.3 }}
-        className="flex flex-col sm:flex-row gap-4 mb-8"
+        className="flex flex-col sm:flex-row gap-4 mb-4"
       >
         <InteractiveHoverButton className="bg-[#99ff66] text-black border-none px-6 py-2.5 text-sm">
-          Book a walkthrough
+          Run /newjd in Slack
         </InteractiveHoverButton>
         <InteractiveHoverButton className="bg-white dark:bg-neutral-900 text-black dark:text-white border-gray-200 dark:border-neutral-800 px-6 py-2.5 text-sm">
-          Download the playbook
+          Open the Hiring Hub
         </InteractiveHoverButton>
       </motion.div>
-
-      {/* Ratings */}
-      <motion.div
+      <motion.p
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.4 }}
-        className="flex flex-col items-center gap-2 mb-16"
+        transition={{ duration: 0.5, delay: 0.35 }}
+        className="text-[10px] uppercase tracking-widest text-gray-400 font-bold mb-8"
       >
-        <div className="flex gap-1">
-          {[...Array(5)].map((_, i) => (
-            <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
-          ))}
-        </div>
-        <p className="text-[10px] uppercase tracking-widest text-gray-400 font-bold">
-          RATED 4.8 ON G2 AND CAPTERRA
-        </p>
-      </motion.div>
+        No demo. No deck. Slack only. Email fallback recruitment at emsoft dot com.
+      </motion.p>
+
+      {/* Ratings removed as per docs */}
 
       {/* Video Container (Cream Box) */}
       <motion.div

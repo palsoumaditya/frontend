@@ -19,28 +19,24 @@ export function Footer({ hideCTA = false }: FooterProps) {
             )}
           >
             <span className="text-[10px] font-bold tracking-[0.3em] text-neutral-500 uppercase mb-8">
-              CONVERSION
+              Open the role
             </span>
             
             <h2 className="text-5xl md:text-7xl font-pt-serif font-bold text-white mb-8 leading-tight">
-              Start screening smarter <br />
-              <span className="text-[#99ff66]">today</span>
+              Open the role. <br />
+              <span className="text-[#99ff66] italic">Skip</span> the rest.
             </h2>
             
             <p className="max-w-xl text-neutral-400 text-sm md:text-base leading-relaxed mb-12">
-              Plumb is in active deployment across teams hiring engineers, operators, and leadership. The fastest way to know if this fits is to see the engine in action.
+              Run /newjd in Slack. Draft today. Shortlist this week.
             </p>
             
-            <span className="text-[10px] font-bold tracking-[0.2em] text-neutral-500 uppercase mb-10">
-              NO CREDIT CARD REQUIRED · 14-DAY FREE TRIAL
-            </span>
-            
             <div className="flex flex-col sm:flex-row items-center gap-4">
-              <InteractiveHoverButton className="bg-transparent text-[#99ff66] border-[#99ff66]/30">
-                Start free
+              <InteractiveHoverButton className="bg-[#99ff66] text-black border-none">
+                Run /newjd in Slack
               </InteractiveHoverButton>
-              <InteractiveHoverButton className="bg-white text-black border-white">
-                Request demo
+              <InteractiveHoverButton className="bg-transparent text-white border-white/20">
+                Open the Hiring Hub
               </InteractiveHoverButton>
             </div>
           </div>
@@ -51,11 +47,11 @@ export function Footer({ hideCTA = false }: FooterProps) {
           hideCTA && "border-t-0 pt-0"
         )}>
           <div className="text-[10px] font-bold tracking-[0.1em] text-muted-foreground uppercase">
-            PLUMB / HIRING FUNNEL AUTOMATION / 2026
+            PLUMB / BUILT INSIDE EMERGENCE SOFTWARE / 2026
           </div>
           
           <div className="flex items-center gap-8">
-            {["PLATFORM", "METHODOLOGY", "SECURITY", "CONTACT"].map((link) => (
+            {["HOW IT WORKS", "FOR HMS", "FOR OPS", "CONTACT"].map((link) => (
               <a
                 key={link}
                 href="#"
@@ -65,6 +61,11 @@ export function Footer({ hideCTA = false }: FooterProps) {
               </a>
             ))}
           </div>
+        </div>
+        <div className="mt-12 text-center">
+          <p className="text-[10px] font-bold tracking-[0.2em] text-neutral-500 uppercase">
+            Plumb. The hiring engine that does not sleep.
+          </p>
         </div>
       </div>
     </footer>

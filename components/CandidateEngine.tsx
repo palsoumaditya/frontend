@@ -63,11 +63,11 @@ export function CandidateEngine() {
               transition={{ duration: 0.6 }}
             >
               <h2 className="text-5xl md:text-6xl font-pt-serif font-bold text-neutral-900 dark:text-white mb-8 leading-[1.1]">
-                Live Candidate <br />
-                <span className="text-[#99ff66] italic">Engine</span>
+                The engine, <br />
+                <span className="text-[#99ff66] italic">mid-shift.</span>
               </h2>
               <p className="text-lg text-neutral-500 dark:text-neutral-400 leading-relaxed mb-12 max-w-lg">
-                The &apos;magic moment&apos; in hiring. Watch as Plumb evaluates every applicant in real time, bubbling top-tier talent to your shortlist instantly.
+                Resumes come in. Plumb does the rest and delivers quality!
               </p>
 
               <div className="grid grid-cols-3 gap-6">
@@ -162,7 +162,7 @@ export function CandidateEngine() {
                           <div className="text-sm font-bold text-neutral-900 dark:text-white group-hover:text-[#99ff66] transition-colors">
                             {c.name}
                           </div>
-                          <div className="text-[10px] text-[#99ff66]/80 font-bold uppercase tracking-wider">Matched</div>
+                          <div className="text-[10px] text-[#99ff66]/80 font-bold uppercase tracking-wider">Shortlisted</div>
                         </div>
                       </div>
                       <div className="text-base font-bold text-neutral-900 dark:text-white">{c.score}%</div>
@@ -179,13 +179,18 @@ export function CandidateEngine() {
                     <div className="w-12 h-12 rounded-full bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center mb-4">
                       <Trophy className="h-6 w-6 text-neutral-400" />
                     </div>
-                    <div className="text-sm font-bold text-neutral-500 mb-1">Evaluating Talent</div>
-                    <div className="text-[10px] text-neutral-400 uppercase tracking-widest">Waiting for 90+ scores</div>
+                    <div className="text-sm font-bold text-neutral-500 mb-1">Waiting on the next batch.</div>
+                    <div className="text-[10px] text-neutral-400 uppercase tracking-widest">Plumb is awake.</div>
                   </motion.div>
                 )}
               </div>
             </div>
           </div>
+        </div>
+        <div className="mt-20 text-center">
+          <p className="text-[10px] text-neutral-400 uppercase tracking-[0.2em]">
+            Sample stream. Real candidates never appear on the public page.
+          </p>
         </div>
       </div>
     </section>
